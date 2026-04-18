@@ -53,3 +53,1114 @@ h3{font-size:clamp(1.2rem,1.8vw,1.5rem)}
 
 /* NAV */
 nav.top{position:sticky;top:0;z-index:50;background:rgba(5,9,18,0.72);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border-bottom:1px solid var(--border)}
+nav.top .row{max-width:1680px;margin:0 auto;padding:14px clamp(20px,4vw,56px);display:flex;align-items:center;justify-content:space-between;gap:24px}
+nav.top .brand{display:flex;align-items:center;gap:10px;font-family:var(--ff-d);font-weight:700;font-size:1.1rem;color:var(--text-0);letter-spacing:-0.02em}
+.brand-mark{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,var(--bio) 0%,var(--cyan) 100%);box-shadow:0 0 12px var(--bio-glow);position:relative}
+.brand-mark::after{content:"";position:absolute;inset:4px;border-radius:3px;background:var(--bg-0)}
+.brand-mark::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:6px;height:6px;border-radius:50%;background:var(--bio);box-shadow:0 0 8px var(--bio)}
+nav ul.links{display:flex;gap:32px}
+nav ul.links a{font-size:0.85rem;color:var(--text-2);font-weight:500;padding:4px 0;position:relative;transition:color var(--dur-1) var(--ease)}
+nav ul.links a:hover{color:var(--text-0)}
+nav ul.links a:hover::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:2px;background:var(--bio);border-radius:2px;box-shadow:0 0 8px var(--bio-glow)}
+nav .status{display:flex;align-items:center;gap:8px;font-family:var(--ff-m);font-size:0.72rem;color:var(--text-3);padding:6px 12px;border:1px solid var(--border);border-radius:var(--r-pill);background:var(--surface)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--bio);box-shadow:0 0 10px var(--bio);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.85)}}
+@media(max-width:800px){nav ul.links{display:none}}
+
+/* HERO */
+.hero{padding:clamp(60px,10vw,140px) 0 clamp(40px,6vw,80px)}
+.hero .wrap{position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;padding:6px 14px;border-radius:var(--r-pill);background:var(--surface);border:1px solid var(--border);font-family:var(--ff-m);font-size:0.72rem;color:var(--text-2);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:28px}
+.hero-badge .dot{background:var(--amber);box-shadow:0 0 10px var(--amber)}
+.hero h1{background:linear-gradient(180deg,var(--text-0) 0%,rgba(255,255,255,0.65) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;max-width:1000px;margin-bottom:24px}
+.hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--bio) 0%,var(--cyan) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{font-size:clamp(1rem,1.4vw,1.25rem);color:var(--text-2);max-width:580px;line-height:1.55}
+.hero .wrap{position:relative}
+@media(min-width:1024px){.hero h1{max-width:860px}}
+
+/* WEATHER WIDGET — blends into hero ambient gradient, dynamic by sunrise/sunset/UV */
+.wx{position:absolute;top:clamp(-10px,0.5vw,8px);right:clamp(0px,2vw,20px);width:clamp(280px,24vw,360px);aspect-ratio:0.9;pointer-events:none;z-index:2;user-select:none;font-family:var(--ff-m);--wx-c1:rgba(124,252,50,0.14);--wx-c2:rgba(34,211,238,0.10);--wx-intensity:0.85}
+.wx-aura{position:absolute;inset:-8%;background:radial-gradient(ellipse 55% 45% at 55% 30%,var(--wx-c1),transparent 62%),radial-gradient(ellipse 60% 48% at 45% 65%,var(--wx-c2),transparent 66%);filter:blur(26px);opacity:var(--wx-intensity);pointer-events:none;transition:opacity 1.2s ease,background 1.2s ease}
+.wx-body{position:absolute;top:4%;left:0;right:0;height:46%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 14px}
+.wx-icon{width:clamp(38px,3.8vw,50px);aspect-ratio:1/1;color:var(--text-2);filter:drop-shadow(0 0 14px rgba(154,168,178,0.3));animation:wxBreathe 5s ease-in-out infinite;transition:color .6s ease,filter .6s ease;margin-bottom:-2px}
+.wx-icon svg{width:100%;height:100%}
+@keyframes wxBreathe{0%,100%{opacity:0.92;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+.wx-temp{font-family:var(--ff-d);font-size:clamp(62px,6.5vw,96px);font-weight:200;line-height:1;letter-spacing:-0.04em;background:linear-gradient(180deg,rgba(245,248,251,0.32) 0%,rgba(124,252,50,0.14) 55%,rgba(34,211,238,0.06) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;font-variant-numeric:tabular-nums;padding:0 8px}
+.wx-desc{font-size:clamp(0.66rem,0.8vw,0.78rem);color:var(--text-1);letter-spacing:0.22em;text-transform:uppercase;text-align:center;white-space:nowrap;font-weight:500;margin-top:-2px}
+.wx-meta{position:absolute;top:52%;left:0;right:0;text-align:center}
+.wx-loc{color:var(--bio);font-size:0.66rem;letter-spacing:0.2em;font-weight:600;margin-bottom:6px;text-shadow:0 0 10px rgba(124,252,50,0.35)}
+.wx-stats{display:flex;gap:14px;justify-content:center;color:var(--text-3);font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase}
+.wx-stats b{color:var(--text-1);font-weight:500;margin-left:3px}
+.wx-forecast{position:absolute;bottom:6%;left:6%;right:6%;padding-top:10px;border-top:1px dashed rgba(124,252,50,0.13)}
+.wx-fc-title{font-size:0.54rem;color:var(--text-4);letter-spacing:0.28em;text-transform:uppercase;text-align:center;margin-bottom:8px}
+.wx-fc-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:2px}
+.wx-h{display:flex;flex-direction:column;align-items:center;gap:3px;padding:3px 0;min-width:0}
+.wx-h-t{font-size:0.52rem;color:var(--text-4);letter-spacing:0.06em;font-weight:500}
+.wx-h-i{width:16px;height:16px;opacity:0.8;transition:color .3s}
+.wx-h-i svg{width:100%;height:100%}
+.wx-h-d{font-size:0.66rem;color:var(--text-1);font-weight:600;font-variant-numeric:tabular-nums}
+.wx-time{position:absolute;bottom:1%;left:0;right:0;text-align:center;font-size:0.52rem;color:var(--text-4);letter-spacing:0.18em;text-transform:uppercase;opacity:0.75}
+.wx-time::before{content:"▸ ";color:var(--bio);opacity:0.7}
+@media(prefers-reduced-motion:reduce){.wx-icon{animation:none}.wx-aura{transition:none}}
+@media(max-width:1024px){.wx{position:relative;top:auto;right:auto;margin:40px auto 0;width:min(360px,92%)}}
+
+/* METRICS */
+section{padding:clamp(60px,8vw,120px) 0}
+.sec-head{margin-bottom:clamp(30px,4vw,56px);max-width:900px}
+.sec-head .eyebrow{margin-bottom:14px;display:inline-block}
+.sec-head p{color:var(--text-2);font-size:clamp(1rem,1.2vw,1.1rem);margin-top:12px;max-width:760px}
+
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;position:relative;overflow:hidden;transition:all var(--dur-2) var(--ease)}
+.metric:hover{border-color:var(--border-2);background:var(--surface-2);transform:translateY(-2px)}
+.metric::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--bio-glow),transparent);opacity:0;transition:opacity var(--dur-2)}
+.metric:hover::before{opacity:1}
+.metric .mk{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.metric .mk-label{font-family:var(--ff-m);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--text-3)}
+.metric .mk-ico{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--bio-soft);border:1px solid var(--border-glow)}
+.metric .mv{font-family:var(--ff-d);font-size:clamp(1.8rem,2.6vw,2.6rem);font-weight:700;line-height:1;color:var(--text-0);letter-spacing:-0.03em}
+.metric .mv small{font-size:1rem;color:var(--text-3);font-weight:500;margin-left:4px}
+.metric .ms{margin-top:8px;font-size:0.82rem;color:var(--text-2)}
+
+/* MAP — slight gap between shell and SVG */
+.map-shell{background:linear-gradient(180deg,var(--bg-1) 0%,var(--bg-2) 100%);border:1px solid var(--border);border-radius:var(--r-xl);padding:12px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.map-svg{width:100%;height:auto;display:block;position:relative;z-index:1;border-radius:var(--r-lg);overflow:hidden;background:#0a1220}
+
+.map-legend{display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:20px;padding:14px 18px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);font-family:var(--ff-m);font-size:0.75rem;color:var(--text-2)}
+.legend-chip{display:inline-flex;align-items:center;gap:8px}
+.lc-dot{width:10px;height:10px;border-radius:50%}
+.lc-bg{background:var(--bio);box-shadow:0 0 8px var(--bio-glow)}
+.lc-cp{background:var(--coral)}
+.lc-gc{background:#6dd96d}
+.lc-cu{background:var(--cyan)}
+.lc-zc{background:#ffd84d}
+.lc-empty{background:var(--text-4)}
+.lc-fence{width:16px;height:2px;border-radius:0;background:var(--amber);box-shadow:0 0 6px var(--amber-glow)}
+
+/* ZONES */
+.zones-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.zone{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px 20px;position:relative;overflow:hidden;transition:all var(--dur-2) var(--ease)}
+.zone:hover{background:var(--surface-2);transform:translateY(-2px)}
+.zone::before{content:"";position:absolute;top:0;left:0;bottom:0;width:4px;background:var(--z-color);box-shadow:0 0 12px -2px var(--z-color)}
+.zone-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.zone-id{font-family:var(--ff-m);font-size:0.72rem;color:var(--z-color);letter-spacing:0.15em;font-weight:700;padding:3px 9px;border:1px solid currentColor;border-radius:var(--r-pill);background:var(--surface)}
+.zone-freq{font-family:var(--ff-m);font-size:0.7rem;color:var(--text-3);letter-spacing:0.1em}
+.zone h4{font-family:var(--ff-d);font-size:1.05rem;color:var(--text-0);margin-bottom:4px}
+.zone-targets{font-family:var(--ff-m);font-size:0.72rem;color:var(--text-2);margin-top:8px;line-height:1.4}
+.zone-targets b{color:var(--z-color);font-weight:600}
+.zone-note{font-size:0.82rem;color:var(--text-2);margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+
+.z-c-1{--z-color:var(--z1)} .z-c-2{--z-color:var(--z2)} .z-c-3{--z-color:var(--z3)} .z-c-4{--z-color:var(--z4)}
+.z-c-5{--z-color:var(--z5)} .z-c-6{--z-color:var(--z6)} .z-c-7{--z-color:var(--z7)} .z-c-8{--z-color:var(--z8)}
+
+/* QUADRANT PLAN */
+.qp-grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(540px,1fr))}
+@media(max-width:620px){.qp-grid{grid-template-columns:1fr}}
+
+.bed-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:clamp(20px,2.5vw,32px);position:relative;overflow:hidden;transition:border-color var(--dur-2) var(--ease)}
+.bed-card:hover{border-color:var(--border-glow)}
+.bed-card::before{content:"";position:absolute;top:0;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,var(--bio),transparent);opacity:0.4}
+.bed-card h3{display:flex;align-items:center;gap:12px;margin-bottom:6px;font-size:1.3rem}
+.bed-card h3 .badge{font-family:var(--ff-m);font-size:0.7rem;padding:3px 10px;border-radius:var(--r-pill);background:var(--bio-soft);color:var(--bio);border:1px solid var(--border-glow);letter-spacing:0.1em}
+.bed-card .sub{font-family:var(--ff-m);font-size:0.78rem;color:var(--text-3);margin-bottom:24px}
+.bed-card .sub b{color:var(--text-1);font-weight:500}
+
+.bed-axis{display:flex;justify-content:space-between;padding:0 8px;margin-bottom:10px;font-family:var(--ff-m);font-size:0.65rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.15em}
+.quad-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;position:relative}
+
+.quad{aspect-ratio:1/1;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r);padding:10px 12px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;transition:all var(--dur-1) var(--ease);cursor:pointer;min-height:120px}
+.quad:hover{transform:translateY(-2px);border-color:var(--q-color,var(--border-glow));box-shadow:0 0 20px -4px var(--q-color-glow,var(--bio-glow));background:var(--bg-3)}
+.quad::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--q-color,var(--bio));opacity:0.9}
+.quad-head{display:flex;justify-content:space-between;align-items:start}
+.quad-tag{font-family:var(--ff-m);font-size:0.62rem;color:var(--text-3);letter-spacing:0.1em;font-weight:500}
+.quad-zone{font-family:var(--ff-m);font-size:0.58rem;color:var(--q-color,var(--bio));font-weight:700;letter-spacing:0.1em;padding:1px 6px;border-radius:var(--r-pill);background:var(--bg-3);border:1px solid var(--q-color,var(--border))}
+.quad-plant{font-family:var(--ff-d);font-size:0.95rem;font-weight:600;color:var(--text-0);line-height:1.15;margin-top:4px}
+.quad-count{font-family:var(--ff-m);font-size:0.72rem;color:var(--q-color,var(--bio));font-weight:500;margin-top:4px}
+.quad-comp{font-size:0.68rem;color:var(--text-3);margin-top:2px;font-style:italic}
+
+.q-okra{--q-color:#9cc96b;--q-color-glow:rgba(156,201,107,0.3)}
+.q-brinjal{--q-color:#b480ff;--q-color-glow:rgba(180,128,255,0.3)}
+.q-tomato{--q-color:#ff5f7a;--q-color-glow:rgba(255,95,122,0.3)}
+.q-roselle{--q-color:#e54d6d;--q-color-glow:rgba(229,77,109,0.3)}
+.q-herb{--q-color:#22d3ee;--q-color-glow:rgba(34,211,238,0.3)}
+.q-beetroot{--q-color:#f06292;--q-color-glow:rgba(240,98,146,0.3)}
+.q-radish{--q-color:#ff8aa0;--q-color-glow:rgba(255,138,160,0.3)}
+.q-mix{--q-color:#ffb347;--q-color-glow:rgba(255,179,71,0.3)}
+
+/* PLANT DB */
+.pdb{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.plant{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;transition:all var(--dur-2) var(--ease);position:relative;overflow:hidden}
+.plant:hover{background:var(--surface-2);border-color:var(--border-2);transform:translateY(-3px)}
+.plant-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.plant-ico{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:var(--ff-d);font-weight:700;font-size:1.05rem;color:#0a1220;background:var(--p-color);box-shadow:0 0 18px -4px var(--p-color)}
+.plant-loc{font-family:var(--ff-m);font-size:0.68rem;padding:4px 10px;border-radius:var(--r-pill);letter-spacing:0.1em;text-transform:uppercase;background:var(--surface);border:1px solid var(--border);color:var(--text-2)}
+.plant-loc.bed{color:var(--bio);border-color:var(--border-glow);background:var(--bio-soft)}
+.plant-loc.pot{color:var(--coral);border-color:rgba(255,95,122,0.3);background:rgba(255,95,122,0.08)}
+.plant-loc.fence{color:var(--amber);border-color:rgba(255,179,71,0.3);background:rgba(255,179,71,0.08)}
+.plant h4{font-family:var(--ff-d);font-size:1.05rem;color:var(--text-0);margin-bottom:2px}
+.plant .latin{font-size:0.76rem;color:var(--text-3);font-style:italic;margin-bottom:16px}
+.plant dl{font-size:0.82rem}
+.plant dl .r{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)}
+.plant dl .r:last-child{border:0}
+.plant dl dt{color:var(--text-3);font-family:var(--ff-m);font-size:0.72rem;letter-spacing:0.05em}
+.plant dl dd{color:var(--text-1);font-weight:500;text-align:right}
+
+/* POTS */
+.pot-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.pot-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:28px;position:relative;overflow:hidden;transition:all var(--dur-2) var(--ease)}
+.pot-card:hover{border-color:var(--border-2);background:var(--surface-2)}
+.pot-card::before{content:"";position:absolute;top:-1px;left:-1px;right:-1px;height:4px;border-radius:var(--r-xl) var(--r-xl) 0 0;background:var(--pt-color);box-shadow:0 0 20px -2px var(--pt-color)}
+.pot-card.bg{--pt-color:var(--bio)}.pot-card.cp{--pt-color:var(--coral)}.pot-card.gc{--pt-color:#6dd96d}.pot-card.cu{--pt-color:var(--cyan)}.pot-card.zc{--pt-color:#ffd84d}
+.pot-head{display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.pot-count{font-family:var(--ff-m);font-size:0.8rem;color:var(--pt-color);font-weight:600;padding:4px 10px;background:var(--surface);border:1px solid currentColor;border-radius:var(--r-pill)}
+.pot-card h4{font-family:var(--ff-d);font-size:1.35rem;color:var(--text-0);margin-bottom:6px}
+.pot-card .desc{color:var(--text-2);font-size:0.95rem;margin-bottom:22px}
+.pot-card .spec{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px;padding:14px 0;margin-bottom:20px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.pot-card .spec div{font-family:var(--ff-m);font-size:0.75rem;color:var(--text-3)}
+.pot-card .spec b{color:var(--text-0);font-weight:500}
+.pot-card ul{font-size:0.9rem;color:var(--text-2)}
+.pot-card li{padding:8px 0 8px 22px;position:relative;line-height:1.5}
+.pot-card li::before{content:"";position:absolute;left:4px;top:15px;width:8px;height:2px;background:var(--pt-color)}
+.pot-card li b{color:var(--text-0);font-weight:600;font-family:var(--ff-m);font-size:0.88em}
+
+/* DISEASE */
+.dw-grid{display:grid;gap:20px;grid-template-columns:1fr 1.2fr}
+@media(max-width:900px){.dw-grid{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:28px;position:relative;overflow:hidden}
+.panel h3{margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.panel.alert{background:linear-gradient(180deg,rgba(255,95,122,0.08),rgba(255,95,122,0.02));border-color:rgba(255,95,122,0.2)}
+.panel.alert h3 .pico{background:rgba(255,95,122,0.15);color:var(--coral)}
+.pico{width:32px;height:32px;border-radius:10px;background:var(--bio-soft);color:var(--bio);display:flex;align-items:center;justify-content:center;font-family:var(--ff-m);font-weight:700;font-size:0.9rem}
+.threat-list,.play-list{display:flex;flex-direction:column;gap:10px}
+.threat{display:flex;gap:14px;padding:14px;background:var(--bg-1);border:1px solid var(--border);border-radius:var(--r);transition:border-color var(--dur-1)}
+.threat:hover{border-color:var(--border-2)}
+.threat-dot{flex:0 0 8px;height:8px;border-radius:50%;margin-top:7px;background:var(--coral);box-shadow:0 0 8px rgba(255,95,122,0.5)}
+.threat-txt{flex:1}
+.threat-n{font-family:var(--ff-d);font-weight:600;color:var(--text-0);font-size:0.95rem;margin-bottom:2px}
+.threat-d{font-size:0.82rem;color:var(--text-2)}
+.play-list{counter-reset:p;gap:14px}
+.play{display:flex;gap:16px;padding:16px;background:var(--bg-1);border:1px solid var(--border);border-radius:var(--r);counter-increment:p;transition:all var(--dur-1)}
+.play:hover{background:var(--bg-2);border-color:var(--border-glow)}
+.play::before{content:counter(p,decimal-leading-zero);flex:0 0 auto;font-family:var(--ff-m);font-weight:600;font-size:0.9rem;color:var(--bio);width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:var(--bio-soft);border-radius:8px;border:1px solid var(--border-glow)}
+.play-t{font-family:var(--ff-d);font-weight:600;color:var(--text-0);font-size:0.95rem;margin-bottom:2px}
+.play-d{font-size:0.85rem;color:var(--text-2);line-height:1.5}
+
+/* TECH */
+.tech-card{background:radial-gradient(ellipse 70% 60% at 100% 0%,rgba(34,211,238,0.12),transparent 50%),radial-gradient(ellipse 60% 50% at 0% 100%,rgba(124,252,50,0.10),transparent 55%),linear-gradient(180deg,var(--bg-1),var(--bg-2));border:1px solid var(--border);border-radius:var(--r-xl);padding:clamp(32px,4vw,56px);display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center;position:relative;overflow:hidden}
+.tech-card::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.tech-card h3{font-size:clamp(1.5rem,2.4vw,2rem);margin-bottom:14px;line-height:1.15}
+.tech-card p{color:var(--text-2);max-width:560px;margin-bottom:26px;font-size:0.95rem}
+.tech-pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{font-family:var(--ff-m);font-size:0.72rem;padding:6px 12px;background:var(--surface);border:1px solid var(--border-2);border-radius:var(--r-pill);color:var(--text-2);letter-spacing:0.05em}
+.pill.ok{color:var(--bio);border-color:var(--border-glow);background:var(--bio-soft)}
+.pill.cy{color:var(--cyan);border-color:rgba(34,211,238,0.3);background:rgba(34,211,238,0.08)}
+.tech-diag{position:relative;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+.tech-diag svg{width:100%;height:100%}
+@media(max-width:900px){.tech-card{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{margin-top:80px;padding:48px 0 40px;border-top:1px solid var(--border);background:linear-gradient(180deg,transparent,rgba(0,0,0,0.3))}
+footer .row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+footer .brand{display:flex;align-items:center;gap:10px;font-family:var(--ff-d);font-weight:600;color:var(--text-0)}
+footer .meta{font-family:var(--ff-m);font-size:0.75rem;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase}
+
+@media (prefers-reduced-motion: reduce){*{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}}
+a:focus-visible,button:focus-visible,.quad:focus-visible{outline:2px solid var(--bio);outline-offset:3px;border-radius:var(--r-sm)}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="row">
+    <div class="brand"><span class="brand-mark"></span>FarmSmart <span class="mono" style="color:var(--text-3);font-weight:400;font-size:0.8rem;margin-left:6px">// Garden OS</span></div>
+    <ul class="links">
+      <li><a href="#map">Site</a></li>
+      <li><a href="#zones">Zones</a></li>
+      <li><a href="#plan">Plan</a></li>
+      <li><a href="#plants">Plants</a></li>
+      <li><a href="#pots">Pots</a></li>
+      <li><a href="#tech">IoT</a></li>
+    </ul>
+    <div class="status"><span class="dot"></span> SEASON · 2026</div>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <aside class="wx" aria-label="Current weather">
+      <div class="wx-aura"></div>
+      <div class="wx-body">
+        <div class="wx-icon" id="wxIcon">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <circle cx="32" cy="32" r="20" stroke-dasharray="3 4" opacity="0.4"/>
+            <circle cx="32" cy="32" r="6" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="wx-temp" id="wxTemp">—°</div>
+        <div class="wx-desc" id="wxDesc">Syncing…</div>
+      </div>
+      <div class="wx-meta">
+        <div class="wx-loc" id="wxLoc">Detecting location…</div>
+        <div class="wx-stats">
+          <span>HUM <b id="wxHum">—</b></span>
+          <span>WIND <b id="wxWind">—</b></span>
+          <span>FEELS <b id="wxFeels">—</b></span>
+        </div>
+      </div>
+      <div class="wx-forecast" aria-label="Next 6 hours">
+        <div class="wx-fc-title">Next 6 hours</div>
+        <div class="wx-fc-grid" id="wxHourly"></div>
+      </div>
+      <div class="wx-time" id="wxTime">connecting</div>
+    </aside>
+    <div class="hero-badge"><span class="dot"></span> Spring planting · April 2026</div>
+    <h1>A backyard garden,<br>re-imagined as <em>infrastructure</em>.</h1>
+    <p class="hero-sub">Two raised beds, sixteen quadrants, seventeen pots, three fence runs for climbers, grouped into eight watering zones for an 8-relay Pi controller.</p>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="wrap" style="padding-top:0">
+  <div class="metrics">
+    <div class="metric"><div class="mk"><span class="mk-label">Growing area</span><span class="mk-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7cfc32" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18M12 3v18"/></svg></span></div><div class="mv">64<small>sq ft</small></div><div class="ms">Two 8 × 4 ft beds · 1 ft soil depth</div></div>
+    <div class="metric"><div class="mk"><span class="mk-label">Quadrants</span><span class="mk-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7cfc32" stroke-width="2"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/></svg></span></div><div class="mv">16</div><div class="ms">2 beds × 4 cols × 2 rows · 2 ft × 2 ft each</div></div>
+    <div class="metric"><div class="mk"><span class="mk-label">Pots staged</span><span class="mk-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7cfc32" stroke-width="2"><path d="M5 8h14l-2 12H7L5 8zM5 8l1-4h12l1 4"/></svg></span></div><div class="mv">17</div><div class="ms">3 BG · 4 CP · 6 GC · 2 CU · 2 ZC</div></div>
+    <div class="metric"><div class="mk"><span class="mk-label">Watering zones</span><span class="mk-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7cfc32" stroke-width="2"><path d="M12 2v8M12 22v-4M4 8l4 4M16 12l4-4M4 16l4-4M16 12l4 4"/><circle cx="12" cy="14" r="3"/></svg></span></div><div class="mv">8</div><div class="ms">One relay per zone · Pi 4 controller</div></div>
+    <div class="metric"><div class="mk"><span class="mk-label">Varieties</span><span class="mk-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7cfc32" stroke-width="2"><path d="M12 2v20M8 6s2 2 4 2 4-2 4-2M6 11s3 2 6 2 6-2 6-2M4 16s4 2 8 2 8-2 8-2"/></svg></span></div><div class="mv">11</div><div class="ms">Indian staples + succession crops</div></div>
+  </div>
+</section>
+
+<!-- ==================== MAP ==================== -->
+<section id="map">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">01 // Site Plan</span>
+      <h2>The garden, to scale.</h2>
+      <p>Top-down blueprint. Dimension lines measure from the outer wall of each raised bed. Each bed divides cleanly into <b style="color:var(--text-0)">2 rows × 4 columns</b> — eight 2 × 2 ft quadrants (B1Q1 … B1Q8 on the left, B2Q1 … B2Q8 on the right). Colored badges on each quadrant indicate its watering zone (Z1–Z4 for beds, Z5–Z8 for pot groups).</p>
+    </div>
+
+    <div class="map-shell">
+      <svg class="map-svg" viewBox="0 0 1530 1120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Top-down garden layout showing beds, pots, fence and watering zones">
+        <defs>
+          <pattern id="fab" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="#121b28"/><path d="M0 0L10 10M10 0L0 10" stroke="#0c1321" stroke-width="0.5"/></pattern>
+          <pattern id="soil" width="18" height="18" patternUnits="userSpaceOnUse"><rect width="18" height="18" fill="#4a3421"/><circle cx="4" cy="6" r="1" fill="#6a4e33"/><circle cx="12" cy="10" r="1" fill="#6a4e33"/><circle cx="8" cy="14" r="0.8" fill="#5d4228"/></pattern>
+          <pattern id="grass" width="14" height="14" patternUnits="userSpaceOnUse"><rect width="14" height="14" fill="#1a3a1a"/><path d="M3 12V7M7 13V6M11 12V8" stroke="#2a5a2a" stroke-width="1"/></pattern>
+          <pattern id="wall" width="24" height="14" patternUnits="userSpaceOnUse"><rect width="24" height="14" fill="#2a2520"/><line x1="0" y1="7" x2="24" y2="7" stroke="#1a1510" stroke-width="0.8"/><line x1="0" y1="13" x2="24" y2="13" stroke="#1a1510" stroke-width="0.8"/></pattern>
+          <pattern id="stone" width="14" height="10" patternUnits="userSpaceOnUse"><rect width="14" height="10" fill="#3a3530"/><line x1="0" y1="5" x2="14" y2="5" stroke="#2a2520" stroke-width="0.6"/><line x1="7" y1="0" x2="7" y2="5" stroke="#2a2520" stroke-width="0.6"/></pattern>
+
+          <radialGradient id="potBG" cx="30%" cy="30%"><stop offset="0%" stop-color="#b4ff6e"/><stop offset="60%" stop-color="#4c9820"/><stop offset="100%" stop-color="#1f4d0e"/></radialGradient>
+          <radialGradient id="potCP" cx="30%" cy="30%"><stop offset="0%" stop-color="#ff8aa0"/><stop offset="60%" stop-color="#c43754"/><stop offset="100%" stop-color="#5a1020"/></radialGradient>
+          <radialGradient id="potGC" cx="30%" cy="30%"><stop offset="0%" stop-color="#a8e67a"/><stop offset="60%" stop-color="#4ea830"/><stop offset="100%" stop-color="#1f4d0e"/></radialGradient>
+          <radialGradient id="potCU" cx="30%" cy="30%"><stop offset="0%" stop-color="#7ee8f5"/><stop offset="60%" stop-color="#22a3b8"/><stop offset="100%" stop-color="#0a4550"/></radialGradient>
+          <radialGradient id="potZC" cx="30%" cy="30%"><stop offset="0%" stop-color="#ffea8a"/><stop offset="60%" stop-color="#d4a72c"/><stop offset="100%" stop-color="#5a4408"/></radialGradient>
+          <radialGradient id="potEM" cx="30%" cy="30%"><stop offset="0%" stop-color="#5a6470"/><stop offset="100%" stop-color="#1a222e"/></radialGradient>
+
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <marker id="vine" markerWidth="8" markerHeight="8" refX="4" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="#7cfc32"/></marker>
+          <marker id="vineC" markerWidth="8" markerHeight="8" refX="4" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="#22d3ee"/></marker>
+        </defs>
+
+        <!-- Full background -->
+        <rect width="1530" height="1120" fill="#0a1220"/>
+
+        <!-- =========== TOP HEADER =========== -->
+        <text x="30" y="32" font-family="'JetBrains Mono',monospace" font-size="13" fill="#7cfc32" letter-spacing="2" font-weight="600">BLUEPRINT · GARDEN.V4 · 2026</text>
+        <text x="30" y="50" font-family="'JetBrains Mono',monospace" font-size="10" fill="#6b7482" letter-spacing="1.5">FABRIC 21×13 FT  |  HOUSE NW  |  LAWN SE  |  FENCE SW·SE·NE  |  8 WATERING ZONES</text>
+
+        <!-- Compass (top right, compact) -->
+        <g transform="translate(1475,38)">
+          <circle r="18" fill="#0a1220" stroke="#7cfc32" stroke-width="1" opacity="0.95"/>
+          <polygon points="0,-15 -3.5,0 3.5,0" fill="#ff5f7a"/>
+          <polygon points="15,0 0,-3.5 0,3.5" fill="#7cfc32" opacity="0.7"/>
+          <polygon points="0,15 -3.5,0 3.5,0" fill="#6b7482"/>
+          <polygon points="-15,0 0,-3.5 0,3.5" fill="#6b7482"/>
+          <text x="0" y="-21" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" font-weight="700" fill="#ff5f7a">NW</text>
+          <text x="24" y="2.5" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" font-weight="700" fill="#7cfc32">NE</text>
+          <text x="0" y="28" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" font-weight="700" fill="#9ea8b2">SE</text>
+          <text x="-24" y="2.5" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" font-weight="700" fill="#9ea8b2">SW</text>
+          <circle r="1.8" fill="#7cfc32"/>
+        </g>
+
+        <!-- =========== HOUSE WALL =========== -->
+        <rect x="0" y="60" width="1530" height="40" fill="url(#wall)" stroke="#1a1510"/>
+        <text x="765" y="86" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="13" fill="#d7dee5" letter-spacing="4" font-weight="600">HOUSE WALL · NW</text>
+
+        <!-- =========== RETAINING WALL =========== -->
+        <rect x="0" y="100" width="30" height="931" fill="url(#stone)"/>
+        <text x="15" y="566" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#d7dee5" letter-spacing="2" transform="rotate(-90 15 566)">RETAINING · SW</text>
+
+        <!-- =========== PATIO =========== -->
+        <rect x="1500" y="100" width="30" height="931" fill="#3a3530"/>
+        <text x="1515" y="566" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#d7dee5" letter-spacing="2" transform="rotate(-90 1515 566)">PATIO · NE</text>
+
+        <!-- =========== FABRIC =========== -->
+        <rect x="30" y="100" width="1470" height="931" fill="url(#fab)"/>
+
+        <!-- =========== LAWN =========== -->
+        <rect x="0" y="1031" width="1530" height="55" fill="url(#grass)"/>
+        <text x="765" y="1067" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="13" fill="#b4ff6e" letter-spacing="4" font-weight="600">LAWN · SE</text>
+
+        <!-- =========== FENCE (SW, SE, NE) =========== -->
+        <line x1="33" y1="100" x2="33" y2="1031" stroke="#ffb347" stroke-width="2.5" opacity="0.85" filter="url(#glow)"/>
+        <g stroke="#ffb347" stroke-width="1" opacity="0.55">
+          <line x1="28" y1="160" x2="38" y2="160"/><line x1="28" y1="230" x2="38" y2="230"/><line x1="28" y1="300" x2="38" y2="300"/>
+          <line x1="28" y1="370" x2="38" y2="370"/><line x1="28" y1="770" x2="38" y2="770"/><line x1="28" y1="840" x2="38" y2="840"/>
+          <line x1="28" y1="910" x2="38" y2="910"/><line x1="28" y1="980" x2="38" y2="980"/>
+        </g>
+        <line x1="30" y1="1028" x2="1500" y2="1028" stroke="#ffb347" stroke-width="2.5" opacity="0.85" filter="url(#glow)"/>
+        <g stroke="#ffb347" stroke-width="1" opacity="0.55">
+          <line x1="100" y1="1023" x2="100" y2="1033"/><line x1="200" y1="1023" x2="200" y2="1033"/><line x1="300" y1="1023" x2="300" y2="1033"/>
+          <line x1="400" y1="1023" x2="400" y2="1033"/><line x1="500" y1="1023" x2="500" y2="1033"/><line x1="600" y1="1023" x2="600" y2="1033"/>
+          <line x1="700" y1="1023" x2="700" y2="1033"/><line x1="800" y1="1023" x2="800" y2="1033"/><line x1="900" y1="1023" x2="900" y2="1033"/>
+          <line x1="1000" y1="1023" x2="1000" y2="1033"/><line x1="1100" y1="1023" x2="1100" y2="1033"/><line x1="1200" y1="1023" x2="1200" y2="1033"/>
+          <line x1="1300" y1="1023" x2="1300" y2="1033"/><line x1="1400" y1="1023" x2="1400" y2="1033"/>
+        </g>
+        <line x1="1497" y1="100" x2="1497" y2="1031" stroke="#ffb347" stroke-width="2.5" opacity="0.85" filter="url(#glow)"/>
+        <g stroke="#ffb347" stroke-width="1" opacity="0.55">
+          <line x1="1492" y1="160" x2="1502" y2="160"/><line x1="1492" y1="230" x2="1502" y2="230"/><line x1="1492" y1="300" x2="1502" y2="300"/>
+          <line x1="1492" y1="370" x2="1502" y2="370"/><line x1="1492" y1="770" x2="1502" y2="770"/><line x1="1492" y1="840" x2="1502" y2="840"/>
+          <line x1="1492" y1="910" x2="1502" y2="910"/><line x1="1492" y1="980" x2="1502" y2="980"/>
+        </g>
+        <text x="45" y="120" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffb347" letter-spacing="1.5" font-weight="600">SW FENCE</text>
+        <text x="765" y="1020" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffb347" letter-spacing="1.5" font-weight="600">SE FENCE · LAWN EDGE</text>
+        <text x="1485" y="120" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ffb347" letter-spacing="1.5" font-weight="600">NE FENCE</text>
+
+        <!-- ==================== BED 1 (SW) — x=240–800, y=436–716 ==================== -->
+        <rect x="240" y="436" width="560" height="280" fill="url(#soil)" stroke="#7cfc32" stroke-width="2.5"/>
+
+        <!-- Clean 2x4 quadrant dividers (3 vertical + 1 horizontal) -->
+        <g stroke="#000" stroke-width="1.6" stroke-dasharray="5 4" opacity="0.95">
+          <line x1="380" y1="436" x2="380" y2="716"/>
+          <line x1="520" y1="436" x2="520" y2="716"/>
+          <line x1="660" y1="436" x2="660" y2="716"/>
+          <line x1="240" y1="576" x2="800" y2="576"/>
+        </g>
+
+        <!-- Quadrant labels + plant names — Bed 1 NW row -->
+        <g font-family="'JetBrains Mono',monospace" font-weight="700" font-size="11" fill="#ffea8a">
+          <text x="250" y="456">B1Q1</text><text x="390" y="456">B1Q2</text><text x="530" y="456">B1Q3</text><text x="670" y="456">B1Q4</text>
+        </g>
+        <!-- Zone badges NW row -->
+        <g font-family="'JetBrains Mono',monospace" font-weight="700" font-size="9">
+          <rect x="348" y="558" width="28" height="14" rx="3" fill="#0a1220" stroke="#9cc96b" stroke-width="0.8"/><text x="362" y="568" text-anchor="middle" fill="#9cc96b">Z1</text>
+          <rect x="488" y="558" width="28" height="14" rx="3" fill="#0a1220" stroke="#9cc96b" stroke-width="0.8"/><text x="502" y="568" text-anchor="middle" fill="#9cc96b">Z1</text>
+          <rect x="628" y="558" width="28" height="14" rx="3" fill="#0a1220" stroke="#9cc96b" stroke-width="0.8"/><text x="642" y="568" text-anchor="middle" fill="#9cc96b">Z1</text>
+          <rect x="768" y="558" width="28" height="14" rx="3" fill="#0a1220" stroke="#9cc96b" stroke-width="0.8"/><text x="782" y="568" text-anchor="middle" fill="#9cc96b">Z1</text>
+        </g>
+        <!-- Plants NW row -->
+        <g text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-weight="700" fill="#fff">
+          <text x="310" y="510" font-size="18">OKRA</text><text x="310" y="532" font-family="'JetBrains Mono',monospace" font-size="11" fill="#9cc96b">× 2</text>
+          <text x="450" y="510" font-size="18">OKRA</text><text x="450" y="532" font-family="'JetBrains Mono',monospace" font-size="11" fill="#9cc96b">× 2</text>
+          <text x="590" y="510" font-size="16">BRINJAL</text><text x="590" y="532" font-family="'JetBrains Mono',monospace" font-size="11" fill="#b480ff">× 1</text>
+          <text x="730" y="510" font-size="16">BRINJAL</text><text x="730" y="532" font-family="'JetBrains Mono',monospace" font-size="11" fill="#b480ff">× 1</text>
+        </g>
+        <!-- Quadrant labels SE row -->
+        <g font-family="'JetBrains Mono',monospace" font-weight="700" font-size="11" fill="#ffea8a">
+          <text x="250" y="596">B1Q5</text><text x="390" y="596">B1Q6</text><text x="530" y="596">B1Q7</text><text x="670" y="596">B1Q8</text>
+        </g>
+        <!-- Zone badges SE row -->
+        <g font-family="'JetBrains Mono',monospace" font-weight="700" font-size="9">
+          <rect x="348" y="698" width="28" height="14" rx="3" fill="#0a1220" stroke="#f06292" stroke-width="0.8"/><text x="362" y="708" text-anchor="middle" fill="#f06292">Z2</text>
+          <rect x="488" y="698" width="28" height="14" rx="3" fill="#0a1220" stroke="#f06292" stroke-width="0.8"/><text x="502" y="708" text-anchor="middle" fill="#f06292">Z2</text>
+          <rect x="628" y="698" width="28" height="14" rx="3" fill="#0a1220" stroke="#f06292" stroke-width="0.8"/><text x="642" y="708" text-anchor="middle" fill="#f06292">Z2</text>
+          <rect x="768" y="698" width="28" height="14" rx="3" fill="#0a1220" stroke="#f06292" stroke-width="0.8"/><text x="782" y="708" text-anchor="middle" fill="#f06292">Z2</text>
+        </g>
+        <!-- Plants SE row -->
+        <g text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-weight="700" fill="#fff">
+          <text x="310" y="645" font-size="16">BASIL</text><text x="310" y="665" font-family="'JetBrains Mono',monospace" font-size="9" fill="#22d3ee">+ nasturtium</text>
+          <text x="450" y="645" font-size="15">BEETROOT</text><text x="450" y="665" font-family="'JetBrains Mono',monospace" font-size="10" fill="#f06292">× 9 dense</text>
+          <text x="590" y="645" font-size="16">RADISH</text><text x="590" y="665" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff8aa0">× 16 succ.</text>
+          <text x="730" y="645" font-size="16">BRINJAL</text><text x="730" y="665" font-family="'JetBrains Mono',monospace" font-size="11" fill="#b480ff">× 1</text>
+        </g>
+        <!-- Bed 1 label -->
+        <rect x="240" y="414" width="68" height="20" fill="#7cfc32"/>
+        <text x="274" y="428" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="#0a1220" letter-spacing="2">BED 1</text>
+
+        <!-- 1-ft divider between beds -->
+        <rect x="800" y="436" width="70" height="280" fill="#2a3543" stroke="#424a55" stroke-width="1"/>
+        <text x="835" y="576" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#6b7482" transform="rotate(-90 835 576)">1 FT GAP</text>
+
+        <!-- ==================== BED 2 (NE) — x=870–1430, y=436–716 ==================== -->
+        <rect x="870" y="436" width="560" height="280" fill="url(#soil)" stroke="#7cfc32" stroke-width="2.5"/>
+
+        <g stroke="#000" stroke-width="1.6" stroke-dasharray="5 4" opacity="0.95">
+          <line x1="1010" y1="436" x2="1010" y2="716"/>
+          <line x1="1150" y1="436" x2="1150" y2="716"/>
+          <line x1="1290" y1="436" x2="1290" y2="716"/>
+          <line x1="870" y1="576" x2="1430" y2="576"/>
+        </g>
+
+        <!-- Quadrant labels + plants — Bed 2 NW row (Z3) -->
+        <g font-family="'JetBrains Mono',monospace" font-weight="700" font-size="11" fill="#ffea8a">
+          <text x="880" y="456">B2Q1</text><text x="1020" y="456">B2Q2</text><text x="1160" y="456">B2Q3</text><text x="1300" y="456">B2Q4</text>
+        </g>
+        <g font-family="'JetBrains Mono',monospace" font-weight="700" font-size="9">
+          <rect x="978" y="558" width="28" height="14" rx="3" fill="#0a1220" stroke="#ff5f7a" stroke-width="0.8"/><text x="992" y="568" text-anchor="middle" fill="#ff5f7a">Z3</text>
+          <rect x="1118" y="558" width="28" height="14" rx="3" fill="#0a1220" stroke="#ff5f7a" stroke-width="0.8"/><text x="1132" y="568" text-anchor="middle" fill="#ff5f7a">Z3</text>
+          <rect x="1258" y="558" width="28" height="14" rx="3" fill="#0a1220" stroke="#ff5f7a" stroke-width="0.8"/><text x="1272" y="568" text-anchor="middle" fill="#ff5f7a">Z3</text>
+          <rect x="1398" y="558" width="28" height="14" rx="3" fill="#0a1220" stroke="#ff5f7a" stroke-width="0.8"/><text x="1412" y="568" text-anchor="middle" fill="#ff5f7a">Z3</text>
+        </g>
+        <g text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-weight="700" fill="#fff">
+          <text x="940" y="510" font-size="16">TOMATO</text><text x="940" y="532" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff5f7a">× 1 caged</text>
+          <text x="1080" y="510" font-size="16">TOMATO</text><text x="1080" y="532" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff5f7a">× 1 caged</text>
+          <text x="1220" y="510" font-size="16">TOMATO</text><text x="1220" y="532" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff5f7a">× 1 caged</text>
+          <text x="1360" y="510" font-size="16">TOMATO</text><text x="1360" y="532" font-family="'JetBrains Mono',monospace" font-size="10" fill="#ff5f7a">× 1 caged</text>
+        </g>
+        <!-- Bed 2 SE row (Z4) -->
+        <g font-family="'JetBrains Mono',monospace" font-weight="700" font-size="11" fill="#ffea8a">
+          <text x="880" y="596">B2Q5</text><text x="1020" y="596">B2Q6</text><text x="1160" y="596">B2Q7</text><text x="1300" y="596">B2Q8</text>
+        </g>
+        <g font-family="'JetBrains Mono',monospace" font-weight="700" font-size="9">
+          <rect x="978" y="698" width="28" height="14" rx="3" fill="#0a1220" stroke="#e54d6d" stroke-width="0.8"/><text x="992" y="708" text-anchor="middle" fill="#e54d6d">Z4</text>
+          <rect x="1118" y="698" width="28" height="14" rx="3" fill="#0a1220" stroke="#e54d6d" stroke-width="0.8"/><text x="1132" y="708" text-anchor="middle" fill="#e54d6d">Z4</text>
+          <rect x="1258" y="698" width="28" height="14" rx="3" fill="#0a1220" stroke="#e54d6d" stroke-width="0.8"/><text x="1272" y="708" text-anchor="middle" fill="#e54d6d">Z4</text>
+          <rect x="1398" y="698" width="28" height="14" rx="3" fill="#0a1220" stroke="#e54d6d" stroke-width="0.8"/><text x="1412" y="708" text-anchor="middle" fill="#e54d6d">Z4</text>
+        </g>
+        <g text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-weight="700" fill="#fff">
+          <text x="940" y="645" font-size="16">ROSELLE</text><text x="940" y="665" font-family="'JetBrains Mono',monospace" font-size="11" fill="#e54d6d">× 1 shrub</text>
+          <text x="1080" y="645" font-size="16">ROSELLE</text><text x="1080" y="665" font-family="'JetBrains Mono',monospace" font-size="11" fill="#e54d6d">× 1 shrub</text>
+          <text x="1220" y="645" font-size="16">BASIL</text><text x="1220" y="665" font-family="'JetBrains Mono',monospace" font-size="9" fill="#22d3ee">+ marigold</text>
+          <text x="1360" y="640" font-size="14">BEET + RADISH</text>
+          <text x="1360" y="660" font-family="'JetBrains Mono',monospace" font-size="9" fill="#ffb347">intercrop</text>
+          <text x="1360" y="675" font-family="'JetBrains Mono',monospace" font-size="9" fill="#f06292">9 + 16</text>
+        </g>
+        <rect x="870" y="414" width="68" height="20" fill="#7cfc32"/>
+        <text x="904" y="428" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="#0a1220" letter-spacing="2">BED 2</text>
+
+        <!-- ==================== DIMENSIONS (tight against bed edges) ==================== -->
+        <!-- Vertical at x=190 -->
+        <line x1="190" y1="100" x2="190" y2="436" stroke="#9ea8b2" stroke-width="1.2"/>
+        <line x1="184" y1="100" x2="196" y2="100" stroke="#9ea8b2" stroke-width="1.5"/>
+        <line x1="184" y1="436" x2="196" y2="436" stroke="#9ea8b2" stroke-width="1.5"/>
+        <rect x="165" y="259" width="50" height="18" fill="#0a1220"/>
+        <text x="190" y="272" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" fill="#d7dee5" font-weight="600">4.8 ft</text>
+
+        <line x1="190" y1="436" x2="190" y2="716" stroke="#b4ff6e" stroke-width="1.4"/>
+        <line x1="184" y1="436" x2="196" y2="436" stroke="#b4ff6e" stroke-width="1.5"/>
+        <line x1="184" y1="716" x2="196" y2="716" stroke="#b4ff6e" stroke-width="1.5"/>
+        <rect x="168" y="567" width="44" height="18" fill="#0a1220"/>
+        <text x="190" y="580" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" fill="#b4ff6e" font-weight="600">4 ft</text>
+
+        <line x1="190" y1="716" x2="190" y2="1031" stroke="#9ea8b2" stroke-width="1.2"/>
+        <line x1="184" y1="716" x2="196" y2="716" stroke="#9ea8b2" stroke-width="1.5"/>
+        <line x1="184" y1="1031" x2="196" y2="1031" stroke="#9ea8b2" stroke-width="1.5"/>
+        <rect x="165" y="865" width="50" height="18" fill="#0a1220"/>
+        <text x="190" y="878" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" fill="#d7dee5" font-weight="600">4.5 ft</text>
+
+        <!-- Horizontal at y=755 -->
+        <line x1="30" y1="755" x2="240" y2="755" stroke="#9ea8b2" stroke-width="1.2"/>
+        <line x1="30" y1="749" x2="30" y2="761" stroke="#9ea8b2" stroke-width="1.5"/>
+        <line x1="240" y1="749" x2="240" y2="761" stroke="#9ea8b2" stroke-width="1.5"/>
+        <rect x="111" y="762" width="48" height="18" fill="#0a1220"/>
+        <text x="135" y="775" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" fill="#d7dee5" font-weight="600">3 ft</text>
+
+        <line x1="240" y1="755" x2="800" y2="755" stroke="#b4ff6e" stroke-width="1.4"/>
+        <line x1="240" y1="749" x2="240" y2="761" stroke="#b4ff6e" stroke-width="1.5"/>
+        <line x1="800" y1="749" x2="800" y2="761" stroke="#b4ff6e" stroke-width="1.5"/>
+        <rect x="496" y="762" width="48" height="18" fill="#0a1220"/>
+        <text x="520" y="775" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" fill="#b4ff6e" font-weight="600">8 ft</text>
+
+        <line x1="800" y1="755" x2="870" y2="755" stroke="#ffb347" stroke-width="1.2"/>
+        <line x1="800" y1="749" x2="800" y2="761" stroke="#ffb347" stroke-width="1.5"/>
+        <line x1="870" y1="749" x2="870" y2="761" stroke="#ffb347" stroke-width="1.5"/>
+        <rect x="811" y="762" width="48" height="18" fill="#0a1220"/>
+        <text x="835" y="775" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" fill="#ffb347" font-weight="600">1 ft</text>
+
+        <line x1="870" y1="755" x2="1430" y2="755" stroke="#b4ff6e" stroke-width="1.4"/>
+        <line x1="870" y1="749" x2="870" y2="761" stroke="#b4ff6e" stroke-width="1.5"/>
+        <line x1="1430" y1="749" x2="1430" y2="761" stroke="#b4ff6e" stroke-width="1.5"/>
+        <rect x="1126" y="762" width="48" height="18" fill="#0a1220"/>
+        <text x="1150" y="775" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" fill="#b4ff6e" font-weight="600">8 ft</text>
+
+        <line x1="1430" y1="755" x2="1500" y2="755" stroke="#9ea8b2" stroke-width="1.2"/>
+        <line x1="1430" y1="749" x2="1430" y2="761" stroke="#9ea8b2" stroke-width="1.5"/>
+        <line x1="1500" y1="749" x2="1500" y2="761" stroke="#9ea8b2" stroke-width="1.5"/>
+        <rect x="1441" y="762" width="48" height="18" fill="#0a1220"/>
+        <text x="1465" y="775" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" fill="#9ea8b2" font-weight="600">1 ft</text>
+
+        <!-- ==================== POTS — TOP STRIP (y=258) · All uniform r=21 ==================== -->
+        <!-- BG1 Z5 — SW corner, climbs SW fence -->
+        <g>
+          <circle cx="115" cy="258" r="21" fill="url(#potBG)" stroke="#7cfc32" stroke-width="1.4"/>
+          <circle cx="115" cy="258" r="14" fill="#2a1810"/>
+          <text x="115" y="262" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#b4ff6e">BG1</text>
+          <text x="115" y="291" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#7cfc32">Z5</text>
+          <path d="M94 246Q70 220 55 195" fill="none" stroke="#7cfc32" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#vine)" opacity="0.85"/>
+        </g>
+        <!-- GC1 Z8 -->
+        <g>
+          <circle cx="250" cy="258" r="21" fill="url(#potGC)" stroke="#6dd96d" stroke-width="1.4"/>
+          <circle cx="250" cy="258" r="14" fill="#2a1810"/>
+          <text x="250" y="262" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#a8e67a">GC1</text>
+          <text x="250" y="291" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#6dd96d">Z8</text>
+        </g>
+        <!-- CP1 Z7 -->
+        <g>
+          <circle cx="380" cy="258" r="21" fill="url(#potCP)" stroke="#ff5f7a" stroke-width="1.4"/>
+          <circle cx="380" cy="258" r="14" fill="#2a1810"/>
+          <text x="380" y="262" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#ff8aa0">CP1</text>
+          <text x="380" y="291" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#ff8a80">Z7</text>
+        </g>
+        <!-- GC2 Z8 -->
+        <g>
+          <circle cx="510" cy="258" r="21" fill="url(#potGC)" stroke="#6dd96d" stroke-width="1.4"/>
+          <circle cx="510" cy="258" r="14" fill="#2a1810"/>
+          <text x="510" y="262" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#a8e67a">GC2</text>
+          <text x="510" y="291" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#6dd96d">Z8</text>
+        </g>
+        <!-- ZC1 Z6 -->
+        <g>
+          <circle cx="650" cy="258" r="21" fill="url(#potZC)" stroke="#ffd84d" stroke-width="1.4"/>
+          <circle cx="650" cy="258" r="14" fill="#2a1810"/>
+          <text x="650" y="262" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#ffea8a">ZC1</text>
+          <text x="650" y="291" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#22d3ee">Z6</text>
+        </g>
+        <!-- GC3 Z8 -->
+        <g>
+          <circle cx="800" cy="258" r="21" fill="url(#potGC)" stroke="#6dd96d" stroke-width="1.4"/>
+          <circle cx="800" cy="258" r="14" fill="#2a1810"/>
+          <text x="800" y="262" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#a8e67a">GC3</text>
+          <text x="800" y="291" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#6dd96d">Z8</text>
+        </g>
+        <!-- CP2 Z7 -->
+        <g>
+          <circle cx="930" cy="258" r="21" fill="url(#potCP)" stroke="#ff5f7a" stroke-width="1.4"/>
+          <circle cx="930" cy="258" r="14" fill="#2a1810"/>
+          <text x="930" y="262" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#ff8aa0">CP2</text>
+          <text x="930" y="291" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#ff8a80">Z7</text>
+        </g>
+        <!-- ZC2 Z6 -->
+        <g>
+          <circle cx="1060" cy="258" r="21" fill="url(#potZC)" stroke="#ffd84d" stroke-width="1.4"/>
+          <circle cx="1060" cy="258" r="14" fill="#2a1810"/>
+          <text x="1060" y="262" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#ffea8a">ZC2</text>
+          <text x="1060" y="291" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#22d3ee">Z6</text>
+        </g>
+        <!-- Spare empty pot -->
+        <circle cx="1230" cy="258" r="11" fill="url(#potEM)" opacity="0.55"/>
+        <text x="1230" y="285" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b7482">empty</text>
+        <!-- BG3 Z5 — NE corner, climbs NE fence -->
+        <g>
+          <circle cx="1410" cy="258" r="21" fill="url(#potBG)" stroke="#7cfc32" stroke-width="1.4"/>
+          <circle cx="1410" cy="258" r="14" fill="#2a1810"/>
+          <text x="1410" y="262" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#b4ff6e">BG3</text>
+          <text x="1410" y="291" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#7cfc32">Z5</text>
+          <path d="M1431 246Q1460 220 1478 195" fill="none" stroke="#7cfc32" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#vine)" opacity="0.85"/>
+        </g>
+
+        <!-- ==================== POTS — BOTTOM STRIP (y=864) · All uniform r=21 ==================== -->
+        <!-- CP3 Z7 -->
+        <g>
+          <circle cx="260" cy="864" r="21" fill="url(#potCP)" stroke="#ff5f7a" stroke-width="1.4"/>
+          <circle cx="260" cy="864" r="14" fill="#2a1810"/>
+          <text x="260" y="868" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#ff8aa0">CP3</text>
+          <text x="260" y="897" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#ff8a80">Z7</text>
+        </g>
+        <!-- CU1 Z6 — climbs SE fence -->
+        <g>
+          <circle cx="420" cy="864" r="21" fill="url(#potCU)" stroke="#22d3ee" stroke-width="1.4"/>
+          <circle cx="420" cy="864" r="14" fill="#2a1810"/>
+          <text x="420" y="868" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#7ee8f5">CU1</text>
+          <text x="420" y="897" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#22d3ee">Z6</text>
+          <path d="M420 886Q420 960 420 1015" fill="none" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#vineC)" opacity="0.7"/>
+        </g>
+        <!-- GC4 Z8 -->
+        <g>
+          <circle cx="560" cy="864" r="21" fill="url(#potGC)" stroke="#6dd96d" stroke-width="1.4"/>
+          <circle cx="560" cy="864" r="14" fill="#2a1810"/>
+          <text x="560" y="868" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#a8e67a">GC4</text>
+          <text x="560" y="897" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#6dd96d">Z8</text>
+        </g>
+        <!-- BG2 Z5 — climbs SE fence center + lateral spread -->
+        <g>
+          <circle cx="730" cy="864" r="21" fill="url(#potBG)" stroke="#7cfc32" stroke-width="1.4"/>
+          <circle cx="730" cy="864" r="14" fill="#2a1810"/>
+          <text x="730" y="868" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#b4ff6e">BG2</text>
+          <text x="730" y="897" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#7cfc32">Z5</text>
+          <path d="M730 886Q730 960 730 1015" fill="none" stroke="#7cfc32" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#vine)" opacity="0.85"/>
+          <path d="M712 1022Q600 1027 480 1025" fill="none" stroke="#7cfc32" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+          <path d="M748 1022Q880 1027 990 1025" fill="none" stroke="#7cfc32" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+        </g>
+        <!-- GC5 Z8 -->
+        <g>
+          <circle cx="900" cy="864" r="21" fill="url(#potGC)" stroke="#6dd96d" stroke-width="1.4"/>
+          <circle cx="900" cy="864" r="14" fill="#2a1810"/>
+          <text x="900" y="868" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#a8e67a">GC5</text>
+          <text x="900" y="897" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#6dd96d">Z8</text>
+        </g>
+        <!-- CU2 Z6 — climbs SE fence -->
+        <g>
+          <circle cx="1060" cy="864" r="21" fill="url(#potCU)" stroke="#22d3ee" stroke-width="1.4"/>
+          <circle cx="1060" cy="864" r="14" fill="#2a1810"/>
+          <text x="1060" y="868" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#7ee8f5">CU2</text>
+          <text x="1060" y="897" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#22d3ee">Z6</text>
+          <path d="M1060 886Q1060 960 1060 1015" fill="none" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#vineC)" opacity="0.7"/>
+        </g>
+        <!-- CP4 Z7 -->
+        <g>
+          <circle cx="1210" cy="864" r="21" fill="url(#potCP)" stroke="#ff5f7a" stroke-width="1.4"/>
+          <circle cx="1210" cy="864" r="14" fill="#2a1810"/>
+          <text x="1210" y="868" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#ff8aa0">CP4</text>
+          <text x="1210" y="897" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#ff8a80">Z7</text>
+        </g>
+        <!-- GC6 Z8 -->
+        <g>
+          <circle cx="1360" cy="864" r="21" fill="url(#potGC)" stroke="#6dd96d" stroke-width="1.4"/>
+          <circle cx="1360" cy="864" r="14" fill="#2a1810"/>
+          <text x="1360" y="868" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="#a8e67a">GC6</text>
+          <text x="1360" y="897" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" fill="#6dd96d">Z8</text>
+        </g>
+
+        <!-- ==================== FOOTER STATUS ==================== -->
+        <text x="30" y="1103" font-family="'JetBrains Mono',monospace" font-size="10" fill="#424a55" letter-spacing="1.5">STATUS: READY · BLUEPRINT v4.0 · 16 QUADRANTS · 17 POTS · 11 VARIETIES · 8 ZONES</text>
+        <text x="1500" y="1103" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="10" fill="#424a55" letter-spacing="1.5">2026.04.17</text>
+      </svg>
+
+    </div>
+
+    <div class="map-legend">
+      <span class="legend-chip"><span class="lc-dot lc-bg"></span> BG · Bottle Gourd · 20 gal · 3 pots (fence)</span>
+      <span class="legend-chip"><span class="lc-dot lc-cp"></span> CP · Capsicum · 5 gal · 4 pots</span>
+      <span class="legend-chip"><span class="lc-dot lc-gc"></span> GC · Green Chili · 3 gal · 6 pots</span>
+      <span class="legend-chip"><span class="lc-dot lc-cu"></span> CU · Cucumber · 5 gal · 2 pots</span>
+      <span class="legend-chip"><span class="lc-dot lc-zc"></span> ZC · Zucchini · 10 gal · 2 pots</span>
+      <span class="legend-chip"><span class="lc-dot lc-empty"></span> empty / movable</span>
+      <span class="legend-chip"><span class="lc-fence"></span> Fence (SW / SE / NE)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WATERING ZONES ==================== -->
+<section id="zones">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">02 // Watering Zones</span>
+      <h2>Eight relays, eight circuits.</h2>
+      <p>The 8-channel relay bank on the Pi maps cleanly to 8 watering circuits — one per water-need cohort. Each zone gets its own moisture threshold, schedule, and drip geometry. Bed zones (Z1–Z4) run drip line along rows; pot zones (Z5–Z8) use one emitter per pot.</p>
+    </div>
+
+    <div class="zones-grid">
+
+      <div class="zone z-c-1"><div class="zone-head"><span class="zone-id">Z1</span><span class="zone-freq">DRIP · 2× / WK</span></div><h4>Bed 1 · NW row</h4><div class="zone-targets"><b>Targets:</b> B1Q1–Q4 · Okra ×4 + Brinjal ×2</div><div class="zone-note">Deep infrequent watering. Tall plants — taproots push down for water.</div></div>
+
+      <div class="zone z-c-2"><div class="zone-head"><span class="zone-id">Z2</span><span class="zone-freq">DRIP · 4× / WK</span></div><h4>Bed 1 · SE row</h4><div class="zone-targets"><b>Targets:</b> B1Q5–Q8 · Basil, Beetroot, Radish, Brinjal</div><div class="zone-note">Consistent moisture — root crops split if watered unevenly.</div></div>
+
+      <div class="zone z-c-3"><div class="zone-head"><span class="zone-id">Z3</span><span class="zone-freq">DRIP · 2× / WK</span></div><h4>Bed 2 · NW row</h4><div class="zone-targets"><b>Targets:</b> B2Q1–Q4 · Tomato ×4 (caged)</div><div class="zone-note">Deep soak every 3–4 days. Pushes roots deep, concentrates sugar in fruit.</div></div>
+
+      <div class="zone z-c-4"><div class="zone-head"><span class="zone-id">Z4</span><span class="zone-freq">DRIP · 3× / WK</span></div><h4>Bed 2 · SE row</h4><div class="zone-targets"><b>Targets:</b> B2Q5–Q8 · Roselle, Basil, Beet+Radish intercrop</div><div class="zone-note">Medium moisture. Roselle tolerates some drought; intercrop needs steady water.</div></div>
+
+      <div class="zone z-c-5"><div class="zone-head"><span class="zone-id">Z5</span><span class="zone-freq">EMITTER · DAILY</span></div><h4>Bottle Gourd pots</h4><div class="zone-targets"><b>Targets:</b> BG1, BG2, BG3 · 3 emitters</div><div class="zone-note">Highest water demand in the plan. Daily in peak summer, twice daily if ≥90°F.</div></div>
+
+      <div class="zone z-c-6"><div class="zone-head"><span class="zone-id">Z6</span><span class="zone-freq">EMITTER · DAILY</span></div><h4>Cucumber + Zucchini pots</h4><div class="zone-targets"><b>Targets:</b> CU1, CU2, ZC1, ZC2 · 4 emitters</div><div class="zone-note">Cucurbits need consistent moisture. Pots dry fast — never let them fully dry.</div></div>
+
+      <div class="zone z-c-7"><div class="zone-head"><span class="zone-id">Z7</span><span class="zone-freq">EMITTER · EVERY 2 DAYS</span></div><h4>Capsicum pots</h4><div class="zone-targets"><b>Targets:</b> CP1–CP4 · 4 emitters</div><div class="zone-note">Peppers prefer slightly dry cycles — overwatering causes blossom drop.</div></div>
+
+      <div class="zone z-c-8"><div class="zone-head"><span class="zone-id">Z8</span><span class="zone-freq">EMITTER · EVERY 2 DAYS</span></div><h4>Green Chili pots</h4><div class="zone-targets"><b>Targets:</b> GC1–GC6 · 6 emitters</div><div class="zone-note">Similar schedule to capsicum. Stress cycles actually concentrate capsaicin.</div></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== QUADRANT PLAN ==================== -->
+<section id="plan">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">03 // Quadrant Map</span>
+      <h2>Sixteen squares, tuned for yield.</h2>
+      <p>Each bed splits into 2 rows × 4 columns = 8 quadrants of 2 × 2 ft. Cucumbers and zucchini moved to pots; the freed quadrants host beetroot (dense) and radish (succession). Bed 2 runs four caged tomatoes across the back for max yield. Zone badges match the map above.</p>
+    </div>
+
+    <div class="qp-grid">
+
+      <div class="bed-card">
+        <h3><span class="badge">B1</span> SW Bed</h3>
+        <p class="sub">8 × 4 ft · <b>4.8 ft</b> from house wall · <b>3 ft</b> from SW retaining · Morning &amp; midday sun</p>
+        <div class="bed-axis"><span>← SW</span><span>NW ROW · ZONE 1</span><span>NE →</span></div>
+        <div class="quad-grid" style="margin-bottom:8px">
+          <div class="quad q-okra" tabindex="0"><div class="quad-head"><span class="quad-tag">B1Q1</span><span class="quad-zone">Z1</span></div><div><div class="quad-plant">Okra</div><div class="quad-count">× 2 plants</div><div class="quad-comp">tall back screen</div></div></div>
+          <div class="quad q-okra" tabindex="0"><div class="quad-head"><span class="quad-tag">B1Q2</span><span class="quad-zone">Z1</span></div><div><div class="quad-plant">Okra</div><div class="quad-count">× 2 plants</div><div class="quad-comp">12–18" spacing</div></div></div>
+          <div class="quad q-brinjal" tabindex="0"><div class="quad-head"><span class="quad-tag">B1Q3</span><span class="quad-zone">Z1</span></div><div><div class="quad-plant">Brinjal</div><div class="quad-count">× 1 plant</div><div class="quad-comp">+ marigold</div></div></div>
+          <div class="quad q-brinjal" tabindex="0"><div class="quad-head"><span class="quad-tag">B1Q4</span><span class="quad-zone">Z1</span></div><div><div class="quad-plant">Brinjal</div><div class="quad-count">× 1 plant</div><div class="quad-comp">+ marigold</div></div></div>
+        </div>
+        <div class="bed-axis"><span>← SW</span><span>SE ROW · ZONE 2</span><span>NE →</span></div>
+        <div class="quad-grid">
+          <div class="quad q-herb" tabindex="0"><div class="quad-head"><span class="quad-tag">B1Q5</span><span class="quad-zone">Z2</span></div><div><div class="quad-plant">Basil + Nasturtium</div><div class="quad-count">companion</div><div class="quad-comp">aphid trap</div></div></div>
+          <div class="quad q-beetroot" tabindex="0"><div class="quad-head"><span class="quad-tag">B1Q6</span><span class="quad-zone">Z2</span></div><div><div class="quad-plant">Beetroot</div><div class="quad-count">× 9 dense</div><div class="quad-comp">6" spacing</div></div></div>
+          <div class="quad q-radish" tabindex="0"><div class="quad-head"><span class="quad-tag">B1Q7</span><span class="quad-zone">Z2</span></div><div><div class="quad-plant">Radish</div><div class="quad-count">× 16 succession</div><div class="quad-comp">replant every 2 wks</div></div></div>
+          <div class="quad q-brinjal" tabindex="0"><div class="quad-head"><span class="quad-tag">B1Q8</span><span class="quad-zone">Z2</span></div><div><div class="quad-plant">Brinjal</div><div class="quad-count">× 1 plant</div><div class="quad-comp">+ basil</div></div></div>
+        </div>
+      </div>
+
+      <div class="bed-card">
+        <h3><span class="badge">B2</span> NE Bed</h3>
+        <p class="sub">8 × 4 ft · <b>1 ft</b> from NE patio · best overall light · full tomato row for max yield</p>
+        <div class="bed-axis"><span>← SW</span><span>NW ROW · ZONE 3</span><span>NE →</span></div>
+        <div class="quad-grid" style="margin-bottom:8px">
+          <div class="quad q-tomato" tabindex="0"><div class="quad-head"><span class="quad-tag">B2Q1</span><span class="quad-zone">Z3</span></div><div><div class="quad-plant">Tomato</div><div class="quad-count">× 1 caged</div><div class="quad-comp">+ basil</div></div></div>
+          <div class="quad q-tomato" tabindex="0"><div class="quad-head"><span class="quad-tag">B2Q2</span><span class="quad-zone">Z3</span></div><div><div class="quad-plant">Tomato</div><div class="quad-count">× 1 caged</div><div class="quad-comp">24" spacing</div></div></div>
+          <div class="quad q-tomato" tabindex="0"><div class="quad-head"><span class="quad-tag">B2Q3</span><span class="quad-zone">Z3</span></div><div><div class="quad-plant">Tomato</div><div class="quad-count">× 1 caged</div><div class="quad-comp">indeterminate</div></div></div>
+          <div class="quad q-tomato" tabindex="0"><div class="quad-head"><span class="quad-tag">B2Q4</span><span class="quad-zone">Z3</span></div><div><div class="quad-plant">Tomato</div><div class="quad-count">× 1 caged</div><div class="quad-comp">high-yield row</div></div></div>
+        </div>
+        <div class="bed-axis"><span>← SW</span><span>SE ROW · ZONE 4</span><span>NE →</span></div>
+        <div class="quad-grid">
+          <div class="quad q-roselle" tabindex="0"><div class="quad-head"><span class="quad-tag">B2Q5</span><span class="quad-zone">Z4</span></div><div><div class="quad-plant">Roselle</div><div class="quad-count">× 1 shrub</div><div class="quad-comp">Gongura leaves</div></div></div>
+          <div class="quad q-roselle" tabindex="0"><div class="quad-head"><span class="quad-tag">B2Q6</span><span class="quad-zone">Z4</span></div><div><div class="quad-plant">Roselle</div><div class="quad-count">× 1 shrub</div><div class="quad-comp">grows 4 ft</div></div></div>
+          <div class="quad q-herb" tabindex="0"><div class="quad-head"><span class="quad-tag">B2Q7</span><span class="quad-zone">Z4</span></div><div><div class="quad-plant">Basil + Marigold</div><div class="quad-count">companion</div><div class="quad-comp">pest guard</div></div></div>
+          <div class="quad q-mix" tabindex="0"><div class="quad-head"><span class="quad-tag">B2Q8</span><span class="quad-zone">Z4</span></div><div><div class="quad-plant">Beet + Radish</div><div class="quad-count">9 + 16 intercrop</div><div class="quad-comp">radish harvests first</div></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PLANTS ==================== -->
+<section id="plants">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">04 // Plant Database</span>
+      <h2>Eleven species, three homes.</h2>
+      <p>Raised bed, pot, or fence climber — every plant tagged by where it lives and why.</p>
+    </div>
+
+    <div class="pdb">
+      <div class="plant" style="--p-color:#9cc96b"><div class="plant-top"><div class="plant-ico">Ok</div><span class="plant-loc bed">Bed · Z1</span></div><h4>Okra</h4><div class="latin">Abelmoschus esculentus</div><dl><div class="r"><dt>Home</dt><dd>B1Q1–Q2</dd></div><div class="r"><dt>Count</dt><dd>4 plants</dd></div><div class="r"><dt>Height</dt><dd>5–6 ft</dd></div><div class="r"><dt>Support</dt><dd>Free-standing</dd></div></dl></div>
+      <div class="plant" style="--p-color:#b480ff"><div class="plant-top"><div class="plant-ico">Br</div><span class="plant-loc bed">Bed · Z1/Z2</span></div><h4>Brinjal</h4><div class="latin">Solanum melongena</div><dl><div class="r"><dt>Home</dt><dd>B1Q3, Q4, Q8</dd></div><div class="r"><dt>Count</dt><dd>3 plants</dd></div><div class="r"><dt>Spacing</dt><dd>18–24"</dd></div><div class="r"><dt>Support</dt><dd>Stake</dd></div></dl></div>
+      <div class="plant" style="--p-color:#ff5f7a"><div class="plant-top"><div class="plant-ico">To</div><span class="plant-loc bed">Bed · Z3</span></div><h4>Tomato</h4><div class="latin">Solanum lycopersicum</div><dl><div class="r"><dt>Home</dt><dd>B2Q1–Q4</dd></div><div class="r"><dt>Count</dt><dd>4 caged</dd></div><div class="r"><dt>Spacing</dt><dd>24"</dd></div><div class="r"><dt>Companion</dt><dd>Basil</dd></div></dl></div>
+      <div class="plant" style="--p-color:#e54d6d"><div class="plant-top"><div class="plant-ico">Ro</div><span class="plant-loc bed">Bed · Z4</span></div><h4>Roselle (Gongura)</h4><div class="latin">Hibiscus sabdariffa</div><dl><div class="r"><dt>Home</dt><dd>B2Q5–Q6</dd></div><div class="r"><dt>Count</dt><dd>2 shrubs</dd></div><div class="r"><dt>Height</dt><dd>4 ft</dd></div><div class="r"><dt>Harvest</dt><dd>All season</dd></div></dl></div>
+      <div class="plant" style="--p-color:#f06292"><div class="plant-top"><div class="plant-ico">Be</div><span class="plant-loc bed">Bed · Z2/Z4</span></div><h4>Beetroot</h4><div class="latin">Beta vulgaris</div><dl><div class="r"><dt>Home</dt><dd>B1Q6, B2Q8</dd></div><div class="r"><dt>Count</dt><dd>18 plants</dd></div><div class="r"><dt>Spacing</dt><dd>6" (9/sqft)</dd></div><div class="r"><dt>Harvest</dt><dd>55–65 days</dd></div></dl></div>
+      <div class="plant" style="--p-color:#ff8aa0"><div class="plant-top"><div class="plant-ico">Ra</div><span class="plant-loc bed">Bed · Z2/Z4</span></div><h4>Radish</h4><div class="latin">Raphanus sativus</div><dl><div class="r"><dt>Home</dt><dd>B1Q7, B2Q8</dd></div><div class="r"><dt>Count</dt><dd>32 initial</dd></div><div class="r"><dt>Spacing</dt><dd>3" (16/sqft)</dd></div><div class="r"><dt>Rotation</dt><dd>Every 2 wks</dd></div></dl></div>
+      <div class="plant" style="--p-color:#7cfc32"><div class="plant-top"><div class="plant-ico">BG</div><span class="plant-loc fence">Fence · Z5</span></div><h4>Bottle Gourd</h4><div class="latin">Lagenaria siceraria</div><dl><div class="r"><dt>Home</dt><dd>3 pots · SW/SE/NE</dd></div><div class="r"><dt>Pot</dt><dd>20 gal</dd></div><div class="r"><dt>Climbs</dt><dd>3 fence runs</dd></div><div class="r"><dt>Watch</dt><dd>Cucurbit family</dd></div></dl></div>
+      <div class="plant" style="--p-color:#22d3ee"><div class="plant-top"><div class="plant-ico">Cu</div><span class="plant-loc pot">Pot · Z6</span></div><h4>Cucumber</h4><div class="latin">Cucumis sativus</div><dl><div class="r"><dt>Count</dt><dd>2 pots</dd></div><div class="r"><dt>Pot</dt><dd>5 gal</dd></div><div class="r"><dt>Support</dt><dd>Climbs SE fence</dd></div><div class="r"><dt>Companion</dt><dd>Dill</dd></div></dl></div>
+      <div class="plant" style="--p-color:#ffd84d"><div class="plant-top"><div class="plant-ico">Zu</div><span class="plant-loc pot">Pot · Z6</span></div><h4>Zucchini</h4><div class="latin">Cucurbita pepo</div><dl><div class="r"><dt>Count</dt><dd>2 pots</dd></div><div class="r"><dt>Pot</dt><dd>10 gal</dd></div><div class="r"><dt>Variety</dt><dd>Bush / compact</dd></div><div class="r"><dt>Where</dt><dd>Top strip</dd></div></dl></div>
+      <div class="plant" style="--p-color:#ff5f7a"><div class="plant-top"><div class="plant-ico">CP</div><span class="plant-loc pot">Pot · Z7</span></div><h4>Capsicum</h4><div class="latin">Capsicum annuum</div><dl><div class="r"><dt>Count</dt><dd>4 pots</dd></div><div class="r"><dt>Pot</dt><dd>5 gal</dd></div><div class="r"><dt>Where</dt><dd>Both strips</dd></div><div class="r"><dt>Support</dt><dd>Bamboo stake</dd></div></dl></div>
+      <div class="plant" style="--p-color:#6dd96d"><div class="plant-top"><div class="plant-ico">GC</div><span class="plant-loc pot">Pot · Z8</span></div><h4>Green Chili</h4><div class="latin">Capsicum annuum (hot)</div><dl><div class="r"><dt>Count</dt><dd>6 pots</dd></div><div class="r"><dt>Pot</dt><dd>3 gal</dd></div><div class="r"><dt>Where</dt><dd>Both strips</dd></div><div class="r"><dt>Companion</dt><dd>Basil in pot</dd></div></dl></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== POT STRATEGY ==================== -->
+<section id="pots">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">05 // Pot Strategy</span>
+      <h2>Seventeen pots, five playbooks.</h2>
+      <p>Pots are the flexible layer — move them with the sun, pull them away from pests. Five roles split cleanly into three watering zones.</p>
+    </div>
+
+    <div class="pot-grid">
+
+      <div class="pot-card bg">
+        <div class="pot-head"><span class="pot-count">3 POTS · Z5</span><span class="mono" style="color:var(--text-3);font-size:0.75rem">20 GAL · ≥16" DEEP</span></div>
+        <h4>Bottle Gourd · Fence climbers</h4>
+        <p class="desc">Aggressive 20-ft vines. Kept in pots so roots stay contained; trained up three different fences for max fruiting surface.</p>
+        <div class="spec"><div><b class="mono">BG1</b> SW corner</div><div><b class="mono">BG2</b> SE middle</div><div><b class="mono">BG3</b> NE corner</div><div><b class="mono">SOIL</b> fresh mix</div></div>
+        <ul><li>Run <b>jute twine or 4" netting</b> up each fence section.</li><li>Support heavy fruits with <b>cloth slings</b>.</li></ul>
+      </div>
+
+      <div class="pot-card zc">
+        <div class="pot-head"><span class="pot-count">2 POTS · Z6</span><span class="mono" style="color:var(--text-3);font-size:0.75rem">10 GAL · ≥14" DEEP</span></div>
+        <h4>Zucchini · Bush variety</h4>
+        <p class="desc">Moved from beds to pots. Use a <b style="color:var(--text-0)">bush cultivar</b> (Black Beauty, Raven) that stays compact.</p>
+        <div class="spec"><div><b class="mono">ZC1</b> top strip</div><div><b class="mono">ZC2</b> top strip</div><div><b class="mono">MIX</b> compost-heavy</div><div><b class="mono">FEED</b> every 2 wks</div></div>
+        <ul><li><b>Hand-pollinate</b> early morning if fruit set is poor — male flowers open first.</li><li>Heavy feeder — add organic fertilizer at planting.</li></ul>
+      </div>
+
+      <div class="pot-card cu">
+        <div class="pot-head"><span class="pot-count">2 POTS · Z6</span><span class="mono" style="color:var(--text-3);font-size:0.75rem">5 GAL · ≥12" DEEP</span></div>
+        <h4>Cucumber · SE-fence climbers</h4>
+        <p class="desc">Moved from beds to pots along the SE fence. Trellised vertically up the fence for clean fruit and airflow.</p>
+        <div class="spec"><div><b class="mono">CU1</b> left of BG2</div><div><b class="mono">CU2</b> right of BG2</div><div><b class="mono">TRELLIS</b> SE fence</div><div><b class="mono">PAIR</b> with dill</div></div>
+        <ul><li>Use <b>bush or compact vining</b> varieties (Spacemaster, Salad Bush).</li><li>Pinch laterals above 5th node for stronger upward growth.</li></ul>
+      </div>
+
+      <div class="pot-card cp">
+        <div class="pot-head"><span class="pot-count">4 POTS · Z7</span><span class="mono" style="color:var(--text-3);font-size:0.75rem">5 GAL · ≥12" DEEP</span></div>
+        <h4>Capsicum · Wall-banked peppers</h4>
+        <p class="desc">Bell peppers set fruit best at 70–85°F. Two pots against the house wall bank heat; two in the SE strip catch sun.</p>
+        <div class="spec"><div><b class="mono">CP1 / CP2</b> NW strip</div><div><b class="mono">CP3 / CP4</b> SE strip</div><div><b class="mono">STAKE</b> 3 ft bamboo</div><div><b class="mono">FEED</b> + bone meal</div></div>
+        <ul><li>Keep pots <b>2 ft apart minimum</b> for airflow.</li><li><b>Mulch pot surface</b> with straw.</li></ul>
+      </div>
+
+      <div class="pot-card gc">
+        <div class="pot-head"><span class="pot-count">6 POTS · Z8</span><span class="mono" style="color:var(--text-3);font-size:0.75rem">3 GAL · ≥10" DEEP</span></div>
+        <h4>Green Chili · Scattered heat-lovers</h4>
+        <p class="desc">Six pots spread across both strips — chilies are prolific, and spreading them across pots spreads the risk.</p>
+        <div class="spec"><div><b class="mono">GC1–GC3</b> NW strip</div><div><b class="mono">GC4–GC6</b> SE strip</div><div><b class="mono">PAIR</b> with basil</div><div><b class="mono">FEED</b> monthly</div></div>
+        <ul><li><b>Basil seedling</b> in each chili pot — deters aphids and whiteflies.</li><li><b>Pinch early flowers</b> for the first 4–6 weeks.</li></ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TECH ==================== -->
+<section id="tech">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">06 // IoT Stack · Next up</span>
+      <h2>Ready for the automation layer.</h2>
+    </div>
+
+    <div class="tech-card">
+      <div>
+        <h3>Plan is locked. Time to wire it up.</h3>
+        <p>Eight relays, eight watering zones, one Raspberry Pi. Capacitive soil-moisture sensors in every bed and in reference pots. Solenoids fire per-zone based on thresholds, skipping when rain is forecast. Pi Camera on a mast logs time-lapse and flags leaf disease. Home Assistant on your phone.</p>
+        <div class="tech-pills">
+          <span class="pill ok">Raspberry Pi 4</span>
+          <span class="pill cy">8-channel relay HAT</span>
+          <span class="pill ok">Capacitive moisture ×8</span>
+          <span class="pill cy">12V solenoid ×8</span>
+          <span class="pill">Drip tape · emitters</span>
+          <span class="pill">DHT22 · BH1750</span>
+          <span class="pill">Pi Camera v3</span>
+          <span class="pill">Home Assistant</span>
+          <span class="pill">TFLite · PlantVillage</span>
+          <span class="pill">MQTT · InfluxDB</span>
+        </div>
+      </div>
+
+      <div class="tech-diag">
+        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="cg2" cx="50%" cy="50%"><stop offset="0%" stop-color="#7cfc32" stop-opacity="0.4"/><stop offset="100%" stop-color="#7cfc32" stop-opacity="0"/></radialGradient></defs>
+          <circle cx="150" cy="150" r="115" fill="url(#cg2)"/>
+          <circle cx="150" cy="150" r="115" fill="none" stroke="#7cfc32" stroke-width="1" opacity="0.3" stroke-dasharray="2 6"/>
+          <circle cx="150" cy="150" r="85" fill="none" stroke="#22d3ee" stroke-width="1" opacity="0.3"/>
+          <circle cx="150" cy="150" r="48" fill="#0a1220" stroke="#7cfc32" stroke-width="1.5"/>
+          <text x="150" y="146" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" fill="#7cfc32">Pi 4</text>
+          <text x="150" y="160" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#9ea8b2">BRAIN</text>
+          <!-- 8 zone nodes around -->
+          <g font-family="'JetBrains Mono',monospace" font-size="9" fill="#d7dee5" font-weight="700">
+            <g><circle cx="150" cy="40" r="18" fill="#0f1a2c" stroke="#9cc96b" stroke-width="1.2"/><text x="150" y="44" text-anchor="middle" fill="#9cc96b">Z1</text></g>
+            <g><circle cx="228" cy="72" r="18" fill="#0f1a2c" stroke="#f06292" stroke-width="1.2"/><text x="228" y="76" text-anchor="middle" fill="#f06292">Z2</text></g>
+            <g><circle cx="260" cy="150" r="18" fill="#0f1a2c" stroke="#ff5f7a" stroke-width="1.2"/><text x="260" y="154" text-anchor="middle" fill="#ff5f7a">Z3</text></g>
+            <g><circle cx="228" cy="228" r="18" fill="#0f1a2c" stroke="#e54d6d" stroke-width="1.2"/><text x="228" y="232" text-anchor="middle" fill="#e54d6d">Z4</text></g>
+            <g><circle cx="150" cy="260" r="18" fill="#0f1a2c" stroke="#7cfc32" stroke-width="1.2"/><text x="150" y="264" text-anchor="middle" fill="#7cfc32">Z5</text></g>
+            <g><circle cx="72" cy="228" r="18" fill="#0f1a2c" stroke="#22d3ee" stroke-width="1.2"/><text x="72" y="232" text-anchor="middle" fill="#22d3ee">Z6</text></g>
+            <g><circle cx="40" cy="150" r="18" fill="#0f1a2c" stroke="#ff8a80" stroke-width="1.2"/><text x="40" y="154" text-anchor="middle" fill="#ff8a80">Z7</text></g>
+            <g><circle cx="72" cy="72" r="18" fill="#0f1a2c" stroke="#6dd96d" stroke-width="1.2"/><text x="72" y="76" text-anchor="middle" fill="#6dd96d">Z8</text></g>
+          </g>
+          <g stroke-width="0.8" opacity="0.55" stroke-dasharray="3 3">
+            <line x1="150" y1="150" x2="150" y2="40" stroke="#9cc96b"/>
+            <line x1="150" y1="150" x2="228" y2="72" stroke="#f06292"/>
+            <line x1="150" y1="150" x2="260" y2="150" stroke="#ff5f7a"/>
+            <line x1="150" y1="150" x2="228" y2="228" stroke="#e54d6d"/>
+            <line x1="150" y1="150" x2="150" y2="260" stroke="#7cfc32"/>
+            <line x1="150" y1="150" x2="72" y2="228" stroke="#22d3ee"/>
+            <line x1="150" y1="150" x2="40" y2="150" stroke="#ff8a80"/>
+            <line x1="150" y1="150" x2="72" y2="72" stroke="#6dd96d"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* Weather widget — IP-geolocated · Open-Meteo · current + 6h forecast · dynamic aura */
+(function(){
+  // Default fallback if IP lookup fails (Columbia, MO)
+  let loc = { lat: 38.9517, lon: -92.3341, city: 'Columbia', region: 'MO', postal: '65203' };
+
+  // Aura gradients per sun phase
+  const GRAD = {
+    dawn:    { c1: 'rgba(255,140,90,0.26)', c2: 'rgba(255,200,120,0.18)' },   // warm peach/gold
+    day:     { c1: 'rgba(124,252,50,0.16)', c2: 'rgba(34,211,238,0.10)' },     // green/cyan bright
+    dusk:    { c1: 'rgba(255,120,80,0.28)', c2: 'rgba(180,100,220,0.18)' },   // amber/violet
+    night:   { c1: 'rgba(60,90,180,0.16)',  c2: 'rgba(110,60,180,0.12)' }     // deep blue/violet
+  };
+
+  const WX = {
+    0:'Clear',1:'Mostly Clear',2:'Partly Cloudy',3:'Overcast',
+    45:'Foggy',48:'Freezing Fog',
+    51:'Light Drizzle',53:'Drizzle',55:'Heavy Drizzle',56:'Freezing Drizzle',57:'Freezing Drizzle',
+    61:'Light Rain',63:'Rain',65:'Heavy Rain',66:'Freezing Rain',67:'Freezing Rain',
+    71:'Light Snow',73:'Snow',75:'Heavy Snow',77:'Snow Grains',
+    80:'Light Showers',81:'Showers',82:'Heavy Showers',
+    85:'Snow Showers',86:'Snow Showers',
+    95:'Thunderstorm',96:'Thunder + Hail',99:'Thunder + Hail'
+  };
+
+  const OFFLINE_SVG = `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="32" cy="32" r="18" opacity="0.45"/><line x1="20" y1="20" x2="44" y2="44" opacity="0.7"/></svg>`;
+
+  const ICONS = {
+    sun: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="10"/><g opacity="0.9"><line x1="32" y1="8" x2="32" y2="14"/><line x1="32" y1="50" x2="32" y2="56"/><line x1="8" y1="32" x2="14" y2="32"/><line x1="50" y1="32" x2="56" y2="32"/><line x1="14.5" y1="14.5" x2="18.5" y2="18.5"/><line x1="45.5" y1="45.5" x2="49.5" y2="49.5"/><line x1="14.5" y1="49.5" x2="18.5" y2="45.5"/><line x1="45.5" y1="18.5" x2="49.5" y2="14.5"/></g></svg>`,
+    moon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M44 40a16 16 0 01-20-20 16 16 0 1020 20z"/></svg>`,
+    partly: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="22" cy="22" r="7"/><path d="M22 9v3M22 32v3M9 22h3M32 22h3M13 13l2 2M29 29l2 2M13 31l2-2M29 15l2-2" opacity="0.85"/><path d="M48 44a9 9 0 00-17-2A7 7 0 0032 55h18a7 7 0 00-2-11z"/></svg>`,
+    partlyNight: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M26 24a10 10 0 01-12-13 10 10 0 1012 13z"/><path d="M48 44a9 9 0 00-17-2A7 7 0 0032 55h18a7 7 0 00-2-11z"/></svg>`,
+    cloud: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M46 32a10 10 0 00-19-3A8 8 0 0030 46h18a7 7 0 00-2-14z"/></svg>`,
+    fog: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M46 28a10 10 0 00-19-3A8 8 0 0030 42h18a7 7 0 00-2-14z"/><line x1="12" y1="50" x2="52" y2="50"/><line x1="16" y1="56" x2="48" y2="56"/></svg>`,
+    rain: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M46 28a10 10 0 00-19-3A8 8 0 0030 42h18a7 7 0 00-2-14z"/><line x1="22" y1="48" x2="20" y2="56"/><line x1="32" y1="48" x2="30" y2="56"/><line x1="42" y1="48" x2="40" y2="56"/></svg>`,
+    snow: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M46 28a10 10 0 00-19-3A8 8 0 0030 42h18a7 7 0 00-2-14z"/><circle cx="22" cy="52" r="1.6" fill="currentColor"/><circle cx="32" cy="52" r="1.6" fill="currentColor"/><circle cx="42" cy="52" r="1.6" fill="currentColor"/></svg>`,
+    thunder: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M46 26a10 10 0 00-19-3A8 8 0 0030 40h18a7 7 0 00-2-14z"/><path d="M32 42l-4 8h5l-3 8 8-10h-5l3-6z" fill="currentColor"/></svg>`
+  };
+
+  const COLORS = {
+    sun:'#ffb347', moon:'#b4ccff', partly:'#ffb347', partlyNight:'#9ab5d9',
+    cloud:'#9ea8b2', fog:'#9ea8b2', rain:'#22d3ee', snow:'#e8f0ff', thunder:'#b480ff'
+  };
+
+  function iconKey(code, isDay){
+    if(code===0||code===1) return isDay ? 'sun' : 'moon';
+    if(code===2) return isDay ? 'partly' : 'partlyNight';
+    if(code===3) return 'cloud';
+    if(code===45||code===48) return 'fog';
+    if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(code)) return 'rain';
+    if([71,73,75,77,85,86].includes(code)) return 'snow';
+    if([95,96,99].includes(code)) return 'thunder';
+    return 'cloud';
+  }
+
+  function compass(deg){
+    const d=['N','NE','E','SE','S','SW','W','NW'];
+    return d[Math.round(deg/45)%8];
+  }
+
+  function hourLabel(dt){
+    const h = dt.getHours();
+    if(h===0) return '12a';
+    if(h===12) return '12p';
+    if(h>12) return (h-12)+'p';
+    return h+'a';
+  }
+
+  // Determine sun phase: dawn · day · dusk · night
+  function phaseFor(now, sunrise, sunset){
+    const t = now.getTime();
+    const sr = sunrise.getTime();
+    const ss = sunset.getTime();
+    const HR = 60*60*1000;
+    if (t < sr - HR*0.5 || t > ss + HR*0.5) return 'night';
+    if (t < sr + HR) return 'dawn';
+    if (t > ss - HR) return 'dusk';
+    return 'day';
+  }
+
+  // Aura intensity from UV index + cloud cover
+  function calcIntensity(uv, cloudCover, isDay){
+    if (!isDay) return 0.45;
+    const uvF = Math.min(1, (uv || 0) / 8);
+    const clF = 1 - (cloudCover || 0) / 100 * 0.6;
+    return Math.max(0.45, Math.min(1, uvF * clF + 0.2));
+  }
+
+  function applyAura(phase, intensity){
+    const g = GRAD[phase] || GRAD.day;
+    const el = document.querySelector('.wx');
+    if (!el) return;
+    el.style.setProperty('--wx-c1', g.c1);
+    el.style.setProperty('--wx-c2', g.c2);
+    el.style.setProperty('--wx-intensity', intensity);
+  }
+
+  // IP-based geolocation (ipapi.co → ipinfo.io → fallback Columbia)
+  async function detectLocation(){
+    const providers = [
+      { url: 'https://ipapi.co/json/', parse: j => ({ lat: j.latitude, lon: j.longitude, city: j.city, region: j.region_code || j.region, postal: j.postal }) },
+      { url: 'https://ipwho.is/', parse: j => j.success ? ({ lat: j.latitude, lon: j.longitude, city: j.city, region: j.region_code || j.region, postal: j.postal }) : null }
+    ];
+    for (const p of providers){
+      try {
+        const r = await fetch(p.url);
+        if (!r.ok) continue;
+        const j = await r.json();
+        const parsed = p.parse(j);
+        if (parsed && parsed.lat && parsed.lon){
+          loc = { lat: parsed.lat, lon: parsed.lon, city: parsed.city || loc.city, region: parsed.region || loc.region, postal: parsed.postal || '' };
+          break;
+        }
+      } catch(e){ /* try next */ }
+    }
+    const pieces = [loc.city ? loc.city.toUpperCase() : '', loc.region, loc.postal].filter(Boolean);
+    document.getElementById('wxLoc').textContent = pieces.length ? pieces[0] + (pieces.length > 1 ? ', ' + pieces.slice(1).join(' · ') : '') : 'Unknown Location';
+  }
+
+  async function loadWeather(){
+    try{
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,wind_direction_10m,is_day,uv_index,cloud_cover&hourly=temperature_2m,weather_code,is_day&daily=sunrise,sunset&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=auto&forecast_days=2`;
+      const r = await fetch(url);
+      if(!r.ok) throw new Error('fetch failed');
+      const j = await r.json();
+      const c = j.current;
+      const k = iconKey(c.weather_code, c.is_day);
+      const color = COLORS[k];
+      const t = new Date(c.time);
+
+      document.getElementById('wxTemp').textContent = Math.round(c.temperature_2m) + '°';
+      document.getElementById('wxDesc').textContent = WX[c.weather_code] || 'Weather Unknown';
+      document.getElementById('wxHum').textContent = c.relative_humidity_2m + '%';
+      document.getElementById('wxWind').textContent = Math.round(c.wind_speed_10m) + ' ' + compass(c.wind_direction_10m);
+      document.getElementById('wxFeels').textContent = Math.round(c.apparent_temperature) + '°';
+
+      const hhmm = t.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',hour12:false});
+      const uvLabel = c.uv_index != null ? ' · uv ' + c.uv_index.toFixed(1) : '';
+      document.getElementById('wxTime').textContent = 'open-meteo · sync ' + hhmm + uvLabel;
+
+      const icoEl = document.getElementById('wxIcon');
+      icoEl.innerHTML = ICONS[k];
+      icoEl.style.color = color;
+      icoEl.style.filter = `drop-shadow(0 0 16px ${color}88) drop-shadow(0 0 4px ${color}cc)`;
+
+      // Dynamic aura — sunrise/sunset phase + UV-driven intensity
+      if (j.daily && j.daily.sunrise && j.daily.sunset){
+        const sr = new Date(j.daily.sunrise[0]);
+        const ss = new Date(j.daily.sunset[0]);
+        const ph = phaseFor(t, sr, ss);
+        const intens = calcIntensity(c.uv_index, c.cloud_cover, c.is_day);
+        applyAura(ph, intens);
+      }
+
+      // Next 6 hours
+      const h = j.hourly;
+      const hourTimes = h.time.map(s => new Date(s));
+      let startIdx = hourTimes.findIndex(dt => dt > t);
+      if(startIdx < 0) startIdx = 0;
+      let html = '';
+      for(let i=startIdx; i<startIdx+6 && i<h.time.length; i++){
+        const dt = hourTimes[i];
+        const temp = Math.round(h.temperature_2m[i]);
+        const code = h.weather_code[i];
+        const isDay = h.is_day[i];
+        const hk = iconKey(code, isDay);
+        const hColor = COLORS[hk] || '#9ea8b2';
+        html += `<div class="wx-h"><div class="wx-h-t">${hourLabel(dt)}</div><div class="wx-h-i" style="color:${hColor}">${ICONS[hk]}</div><div class="wx-h-d">${temp}°</div></div>`;
+      }
+      document.getElementById('wxHourly').innerHTML = html;
+    }catch(e){
+      document.getElementById('wxDesc').textContent = 'Weather Offline';
+      document.getElementById('wxTime').textContent = 'no connection';
+      const icoEl = document.getElementById('wxIcon');
+      icoEl.innerHTML = OFFLINE_SVG;
+      icoEl.style.color = 'var(--text-3)';
+      icoEl.style.filter = 'none';
+      document.getElementById('wxHourly').innerHTML = '';
+    }
+  }
+
+  async function init(){
+    await detectLocation();
+    await loadWeather();
+  }
+
+  init();
+  setInterval(loadWeather, 15 * 60 * 1000);
+})();
+</script>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div class="brand"><span class="brand-mark"></span> FarmSmart</div>
+      <div class="meta">V4 · PLAN LOCKED · 2026.04.17</div>
+      <div class="meta" style="color:var(--text-3)">8 Zones · 16 Quadrants · 17 Pots</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
