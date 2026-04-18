@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FarmSmart // Garden OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{min-height:100vh;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+
+:root{
+  --bg-0:#050912;--bg-1:#0a1220;--bg-2:#0f1a2c;--bg-3:#15243b;
+  --surface:rgba(255,255,255,0.035);--surface-2:rgba(255,255,255,0.055);--surface-3:rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,0.08);--border-2:rgba(255,255,255,0.14);--border-glow:rgba(124,252,50,0.25);
+  --text-0:#f5f8fb;--text-1:#d7dee5;--text-2:#9ea8b2;--text-3:#6b7482;--text-4:#424a55;
+  --bio:#7cfc32;--bio-2:#b4ff6e;--bio-glow:rgba(124,252,50,0.35);--bio-soft:rgba(124,252,50,0.12);
+  --cyan:#22d3ee;--cyan-glow:rgba(34,211,238,0.35);
+  --amber:#ffb347;--amber-glow:rgba(255,179,71,0.4);
+  --coral:#ff5f7a;--violet:#b480ff;--magenta:#f06292;
+  --z1:#9cc96b;--z2:#f06292;--z3:#ff5f7a;--z4:#e54d6d;--z5:#7cfc32;--z6:#22d3ee;--z7:#ff8a80;--z8:#6dd96d;
+  --r-xs:4px;--r-sm:8px;--r:12px;--r-lg:18px;--r-xl:26px;--r-pill:999px;
+  --shadow:0 20px 60px -20px rgba(0,0,0,0.6);
+  --ff-d:'Space Grotesk','Inter',system-ui,sans-serif;
+  --ff-b:'Inter',system-ui,sans-serif;
+  --ff-m:'JetBrains Mono','SF Mono',Menlo,Consolas,monospace;
+  --dur-1:160ms;--dur-2:280ms;--ease:cubic-bezier(.2,.8,.2,1);
+}
+
+body{font-family:var(--ff-b);color:var(--text-1);background:var(--bg-0);line-height:1.6;font-feature-settings:'ss01','cv11';-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 15% 0%,rgba(124,252,50,0.10),transparent 55%),radial-gradient(ellipse 60% 50% at 90% 30%,rgba(34,211,238,0.08),transparent 60%);pointer-events:none;z-index:0}
+body::after{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse at center,#000 40%,transparent 80%);pointer-events:none;z-index:0}
+main,nav,footer{position:relative;z-index:1}
+
+h1,h2,h3,h4,h5{font-family:var(--ff-d);color:var(--text-0);line-height:1.1;letter-spacing:-0.02em;font-weight:600}
+h1{font-size:clamp(2.4rem,5.5vw,5rem);font-weight:700;letter-spacing:-0.035em}
+h2{font-size:clamp(1.8rem,3.2vw,3rem);font-weight:600}
+h3{font-size:clamp(1.2rem,1.8vw,1.5rem)}
+
+.mono{font-family:var(--ff-m);font-feature-settings:'zero','ss01';letter-spacing:-0.02em}
+.eyebrow{font-family:var(--ff-m);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.22em;color:var(--bio);font-weight:500}
+.eyebrow::before{content:"▸ ";color:var(--bio);opacity:0.8}
+
+.wrap{max-width:1680px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+.wrap-wide{max-width:1920px;margin:0 auto;padding:0 clamp(8px,1.5vw,24px)}
+
+/* NAV */
+nav.top{position:sticky;top:0;z-index:50;background:rgba(5,9,18,0.72);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border-bottom:1px solid var(--border)}
