@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmSmart — Garden Plan | Pot Placement & Bed Layout</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-dark: #2d5a2d;
+    --green-mid: #4a7a3e;
+    --green-light: #8bbf5e;
+    --green-pale: #e4efd7;
+    --earth: #8b6b47;
+    --earth-light: #c8a97a;
+    --terracotta: #c4704a;
+    --terracotta-light: #e8a88a;
+    --red: #c0392b;
+    --yellow: #f4c430;
+    --cream: #f7f5ef;
+    --cream-dark: #ece8d8;
+    --card: #ffffff;
+    --text: #2b3a2b;
+    --text-soft: #4a5a4a;
+    --muted: #6b6b5e;
+    --border: #e0dcc8;
+    --shadow-sm: 0 2px 6px rgba(45, 90, 45, 0.06);
+    --shadow-md: 0 6px 20px rgba(45, 90, 45, 0.10);
+    --shadow-lg: 0 16px 40px rgba(45, 90, 45, 0.14);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--green-dark);
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  a { color: var(--green-mid); text-decoration: none; transition: color 0.2s; }
+  a:hover { color: var(--green-dark); }
+
+  /* ========== NAV ========== */
+  nav.topnav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(247, 245, 239, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav.topnav .inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  nav.topnav .brand {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--green-dark);
+    letter-spacing: -0.5px;
+  }
+  nav.topnav .brand::before {
+    content: "";
+    display: inline-block;
+    width: 10px; height: 10px;
+    background: var(--green-mid);
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  nav.topnav ul { display: flex; gap: 28px; list-style: none; }
+  nav.topnav li a {
+    font-size: 14px;
+    color: var(--text-soft);
+    font-weight: 500;
+  }
+  nav.topnav li a:hover { color: var(--green-dark); }
+
+  /* ========== HERO ========== */
+  header.hero {
+    padding: 80px 40px 60px;
+    background: linear-gradient(135deg, #2d5a2d 0%, #4a7a3e 100%);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  header.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(255,255,255,0.08) 0%, transparent 30%),
+      radial-gradient(circle at 85% 80%, rgba(255,255,255,0.06) 0%, transparent 35%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    font-weight: 600;
+  }
+  h1.hero-title {
+    font-size: 56px;
+    color: #fff;
+    margin-bottom: 18px;
+    letter-spacing: -1px;
+    line-height: 1.05;
+  }
+  .hero-sub {
+    font-size: 20px;
+    max-width: 720px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 30px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 24px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+  }
+  .hero-meta span::before {
+    content: "▸";
+    margin-right: 8px;
+    color: var(--green-light);
+  }
+
+  /* ========== STATS ========== */
+  section.stats {
+    max-width: 1200px;
+    margin: -40px auto 0;
+    padding: 0 40px;
+    position: relative;
+    z-index: 2;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .stat-card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 22px 24px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+  }
+  .stat-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .stat-value {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    color: var(--green-dark);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .stat-sub {
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-top: 6px;
+  }
+
+  /* ========== SECTIONS ========== */
+  section.sect {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+  .sect-label {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  h2.sect-title {
+    font-size: 38px;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+  p.sect-lead {
+    font-size: 17px;
+    color: var(--text-soft);
+    max-width: 780px;
+    margin-bottom: 40px;
+  }
+
+  /* ========== MAP ========== */
+  .map-wrap {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .map-wrap svg { width: 100%; height: auto; display: block; }
+
+  /* SVG hover effects */
+  .pot-group { cursor: pointer; transition: transform 0.2s; transform-origin: center; transform-box: fill-box; }
+  .pot-group:hover { transform: scale(1.15); }
+  .bed-group { cursor: pointer; transition: filter 0.2s; }
+  .bed-group:hover { filter: brightness(1.05); }
+
+  /* ========== POT PLACEMENT ========== */
+  .pot-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .pot-card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .pot-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .pot-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+  }
+  .pot-card.bg::before { background: linear-gradient(90deg, #8bbf5e, #4a7a3e); }
+  .pot-card.cp::before { background: linear-gradient(90deg, #e8a88a, #c4704a); }
+  .pot-card.gc::before { background: linear-gradient(90deg, #a8d06a, #5a8a3a); }
+
+  .pot-card .badge {
+    display: inline-block;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .pot-card.bg .badge { background: var(--green-pale); color: var(--green-dark); }
+  .pot-card.cp .badge { background: #fce7dc; color: var(--terracotta); }
+  .pot-card.gc .badge { background: #e4efd7; color: var(--green-mid); }
+
+  .pot-card h3 { font-size: 22px; margin-bottom: 10px; }
+  .pot-card .spec {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .pot-card .spec b { color: var(--text); font-weight: 600; }
+  .pot-card ul { list-style: none; padding: 0; }
+  .pot-card li {
+    font-size: 14px;
+    padding: 6px 0 6px 22px;
+    position: relative;
+    color: var(--text-soft);
+  }
+  .pot-card li::before {
+    content: "●";
+    position: absolute;
+    left: 4px;
+    color: var(--green-mid);
+    font-size: 10px;
+    top: 10px;
+  }
+
+  /* ========== PLANT GRID ========== */
+  .plant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .plant-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 22px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .plant-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .plant-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 14px;
+  }
+  .plant-card h4 { font-size: 18px; margin-bottom: 4px; }
+  .plant-card .latin {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .plant-card .row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .plant-card .row:last-child { border-bottom: 0; }
+  .plant-card .row span:first-child { color: var(--muted); }
+  .plant-card .row span:last-child { color: var(--text); font-weight: 600; }
+
+  .tag-bed { background: var(--green-mid); }
+  .tag-pot { background: var(--terracotta); }
+  .tag-fence { background: var(--earth); }
+
+  /* ========== DISEASE ========== */
+  .disease-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .disease-card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 30px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+  }
+  .disease-card.alert {
+    background: linear-gradient(135deg, #fff7ed 0%, #fcd9a5 100%);
+    border-color: #e9b36a;
+  }
+  .disease-card h3 { font-size: 22px; margin-bottom: 14px; }
+  .disease-card ol, .disease-card ul { padding-left: 20px; }
+  .disease-card li { margin-bottom: 10px; color: var(--text-soft); font-size: 15px; }
+  .disease-card li b { color: var(--text); }
+
+  /* ========== CALLOUT ========== */
+  .callout {
+    background: var(--green-dark);
+    color: #fff;
+    border-radius: 16px;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+    box-shadow: var(--shadow-lg);
+  }
+  .callout h3 { color: #fff; font-size: 28px; margin-bottom: 12px; }
+  .callout p { color: rgba(255,255,255,0.85); font-size: 16px; max-width: 640px; }
+  .callout-icon {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+    font-size: 36px;
+    color: var(--green-light);
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: #1e3a1e;
+    color: rgba(255,255,255,0.7);
+    padding: 40px;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 60px;
+  }
+  footer .brand-foot {
+    color: #fff;
+    font-family: Georgia, serif;
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 900px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .pot-grid { grid-template-columns: 1fr; }
+    .disease-wrap { grid-template-columns: 1fr; }
+    .callout { grid-template-columns: 1fr; text-align: center; }
+    h1.hero-title { font-size: 38px; }
+    nav.topnav ul { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="inner">
+    <div class="brand">FarmSmart</div>
+    <ul>
+      <li><a href="#map">Map</a></li>
+      <li><a href="#pots">Pots</a></li>
+      <li><a href="#plants">Plants</a></li>
+      <li><a href="#disease">Disease Watch</a></li>
+      <li><a href="#tech">Smart Tech</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">Season 2026 · Planting Plan</span>
+    <h1 class="hero-title">A smarter backyard garden.</h1>
+    <p class="hero-sub">Two raised beds, movable clay pots, and a three-sided fence — planned out for sun, airflow, and disease resistance. Bottle gourds climb the fence. Peppers bask against the house wall. Zucchini gets room to sprawl.</p>
+    <div class="hero-meta">
+      <span>Updated April 17, 2026</span>
+      <span>Bed size: 8 × 4 × 1 ft</span>
+      <span>Southern exposure: Excellent</span>
+    </div>
+  </div>
+</header>
+
+<!-- ========== STATS ========== -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-label">Raised Beds</div>
+      <div class="stat-value">2</div>
+      <div class="stat-sub">64 sq ft of growing space</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Potted Plants</div>
+      <div class="stat-value">13</div>
+      <div class="stat-sub">Movable, fence-climbing &amp; heat-loving</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Plant Varieties</div>
+      <div class="stat-value">9</div>
+      <div class="stat-sub">Tomato, brinjal, okra, cucumber, zucchini, roselle, bottle gourd, chili, capsicum</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Fence Climbers</div>
+      <div class="stat-value">3</div>
+      <div class="stat-sub">Bottle gourd vines on SW, SE &amp; NE fences</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MAP ========== -->
+<section class="sect" id="map">
+  <span class="sect-label">Site Plan</span>
+  <h2 class="sect-title">The garden, from above.</h2>
+  <p class="sect-lead">Top-down view with house wall (NW) on top and lawn (SE) at the bottom. The fence wraps around three sides — SW, SE, and NE — which we'll use as a natural trellis for bottle gourd vines. Retaining wall and patio are drawn smaller so the planting area reads clearly. Small circles along the top and bottom strips are movable clay pots.</p>
+  <div class="map-wrap">
+    <svg viewBox="0 0 1400 820" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+      <!-- Background -->
+      <rect width="1400" height="820" fill="#f7f5ef"/>
+
+      <defs>
+        <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+          <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#d8d4c7" stroke-width="0.5"/>
+        </pattern>
+        <pattern id="bedgrid" width="50" height="50" patternUnits="userSpaceOnUse">
+          <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#6b4e2e" stroke-width="0.5" stroke-dasharray="2 2"/>
+        </pattern>
+        <pattern id="fabric" width="8" height="8" patternUnits="userSpaceOnUse">
+          <rect width="8" height="8" fill="#3a3a3a"/>
+          <path d="M 0 0 L 8 8 M 8 0 L 0 8" stroke="#2a2a2a" stroke-width="0.5"/>
+        </pattern>
+        <pattern id="grass" width="10" height="10" patternUnits="userSpaceOnUse">
+          <rect width="10" height="10" fill="#7bae5a"/>
+          <path d="M 2 8 L 2 4 M 5 9 L 5 3 M 8 8 L 8 5" stroke="#5a8e3e" stroke-width="0.8"/>
+        </pattern>
+        <pattern id="soil" width="14" height="14" patternUnits="userSpaceOnUse">
+          <rect width="14" height="14" fill="#8b6b47"/>
+          <circle cx="3" cy="4" r="0.8" fill="#6b4e2e"/>
+          <circle cx="10" cy="8" r="0.8" fill="#6b4e2e"/>
+          <circle cx="6" cy="11" r="0.8" fill="#6b4e2e"/>
+        </pattern>
+        <pattern id="concrete" width="14" height="14" patternUnits="userSpaceOnUse">
+          <rect width="14" height="14" fill="#b8b2a3"/>
+          <circle cx="4" cy="4" r="0.6" fill="#98927e"/>
+        </pattern>
+        <pattern id="siding" width="12" height="12" patternUnits="userSpaceOnUse">
+          <rect width="12" height="12" fill="#e8d9c0"/>
+          <line x1="0" y1="6" x2="12" y2="6" stroke="#b8a480" stroke-width="0.6"/>
+        </pattern>
+        <pattern id="wallstone" width="16" height="10" patternUnits="userSpaceOnUse">
+          <rect width="16" height="10" fill="#9a8e7a"/>
+          <line x1="0" y1="5" x2="16" y2="5" stroke="#6a5e4a" stroke-width="0.6"/>
+        </pattern>
+
+        <!-- Pot gradient (terracotta) -->
+        <radialGradient id="potTC" cx="40%" cy="40%">
+          <stop offset="0%" stop-color="#e8a88a"/>
+          <stop offset="100%" stop-color="#8b4a2a"/>
+        </radialGradient>
+        <!-- Green pot (for bottle gourd large pots) -->
+        <radialGradient id="potBG" cx="40%" cy="40%">
+          <stop offset="0%" stop-color="#a8d06a"/>
+          <stop offset="100%" stop-color="#3a5a2a"/>
+        </radialGradient>
+        <!-- Empty / movable pot (grey-dark) -->
+        <radialGradient id="potEmpty" cx="40%" cy="40%">
+          <stop offset="0%" stop-color="#555"/>
+          <stop offset="100%" stop-color="#1a1a1a"/>
+        </radialGradient>
+
+        <marker id="arrowSun" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
+          <polygon points="0 0, 6 3, 0 6" fill="#e8a42a"/>
+        </marker>
+        <marker id="arrowVine" markerWidth="8" markerHeight="8" refX="4" refY="2.5" orient="auto">
+          <polygon points="0 0, 5 2.5, 0 5" fill="#3a7a2a"/>
+        </marker>
+      </defs>
+
+      <!-- Title -->
+      <text x="700" y="35" text-anchor="middle" font-size="22" font-weight="700" fill="#2b3a2b">Garden Layout · Horizontal · House Wall on Top</text>
+      <text x="700" y="56" text-anchor="middle" font-size="12" fill="#666">Scale: 1 grid = 1 ft · Beds at true scale · Pot sizes slightly exaggerated for clarity</text>
+
+      <!-- Plot frame -->
+      <rect x="60" y="80" width="1280" height="620" fill="url(#grid)" stroke="#c9c4b3" stroke-width="1"/>
+
+      <!-- HOUSE WALL (top, NW) -->
+      <rect x="60" y="80" width="1280" height="60" fill="url(#siding)" stroke="#8a7a60" stroke-width="1.5"/>
+      <text x="700" y="117" text-anchor="middle" font-size="17" font-weight="700" fill="#5a4a30">HOUSE WALL (NW)</text>
+
+      <!-- RETAINING WALL (left, SW end) — REDUCED to 30 px -->
+      <rect x="60" y="140" width="30" height="470" fill="url(#wallstone)"/>
+      <text x="75" y="375" text-anchor="middle" font-size="10" font-weight="600" fill="#fff" transform="rotate(-90 75 375)">Retaining Wall</text>
+
+      <!-- PATIO (right, NE end) — REDUCED to 30 px -->
+      <rect x="1310" y="140" width="30" height="470" fill="url(#concrete)"/>
+      <text x="1325" y="375" text-anchor="middle" font-size="10" font-weight="600" fill="#3a3a3a" transform="rotate(-90 1325 375)">Patio</text>
+
+      <!-- Fabric area -->
+      <rect x="90" y="140" width="1220" height="470" fill="url(#fabric)" opacity="0.9"/>
+      <text x="700" y="160" text-anchor="middle" font-size="10" fill="#f0f0f0" font-style="italic">landscape fabric (walkway / weed barrier)</text>
+
+      <!-- ===== FENCE on SW, SE, NE ===== -->
+      <!-- SW fence (vertical, left) -->
+      <line x1="97" y1="140" x2="97" y2="610" stroke="#5a4a30" stroke-width="3"/>
+      <!-- fence rails (horizontal ticks for visual) -->
+      <g stroke="#4a3a20" stroke-width="1">
+        <line x1="93" y1="180" x2="101" y2="180"/>
+        <line x1="93" y1="240" x2="101" y2="240"/>
+        <line x1="93" y1="300" x2="101" y2="300"/>
+        <line x1="93" y1="360" x2="101" y2="360"/>
+        <line x1="93" y1="420" x2="101" y2="420"/>
+        <line x1="93" y1="480" x2="101" y2="480"/>
+        <line x1="93" y1="540" x2="101" y2="540"/>
+        <line x1="93" y1="600" x2="101" y2="600"/>
+      </g>
+      <text x="115" y="155" font-size="10" font-weight="700" fill="#e8e8e8">SW fence</text>
+
+      <!-- SE fence (horizontal, bottom) -->
+      <line x1="97" y1="610" x2="1303" y2="610" stroke="#5a4a30" stroke-width="3"/>
+      <g stroke="#4a3a20" stroke-width="1">
+        <line x1="150" y1="606" x2="150" y2="614"/>
+        <line x1="250" y1="606" x2="250" y2="614"/>
+        <line x1="350" y1="606" x2="350" y2="614"/>
+        <line x1="450" y1="606" x2="450" y2="614"/>
+        <line x1="550" y1="606" x2="550" y2="614"/>
+        <line x1="650" y1="606" x2="650" y2="614"/>
+        <line x1="750" y1="606" x2="750" y2="614"/>
+        <line x1="850" y1="606" x2="850" y2="614"/>
+        <line x1="950" y1="606" x2="950" y2="614"/>
+        <line x1="1050" y1="606" x2="1050" y2="614"/>
+        <line x1="1150" y1="606" x2="1150" y2="614"/>
+        <line x1="1250" y1="606" x2="1250" y2="614"/>
+      </g>
+      <text x="700" y="600" text-anchor="middle" font-size="10" font-weight="700" fill="#f0f0f0" font-style="italic">SE fence (runs along the lawn)</text>
+
+      <!-- NE fence (vertical, right) -->
+      <line x1="1303" y1="140" x2="1303" y2="610" stroke="#5a4a30" stroke-width="3"/>
+      <g stroke="#4a3a20" stroke-width="1">
+        <line x1="1299" y1="180" x2="1307" y2="180"/>
+        <line x1="1299" y1="240" x2="1307" y2="240"/>
+        <line x1="1299" y1="300" x2="1307" y2="300"/>
+        <line x1="1299" y1="360" x2="1307" y2="360"/>
+        <line x1="1299" y1="420" x2="1307" y2="420"/>
+        <line x1="1299" y1="480" x2="1307" y2="480"/>
+        <line x1="1299" y1="540" x2="1307" y2="540"/>
+        <line x1="1299" y1="600" x2="1307" y2="600"/>
+      </g>
+      <text x="1285" y="155" text-anchor="end" font-size="10" font-weight="700" fill="#e8e8e8">NE fence</text>
+
+      <!-- GRASS LAWN (bottom, SE) -->
+      <rect x="60" y="610" width="1280" height="90" fill="url(#grass)" opacity="0.9"/>
+      <text x="700" y="665" text-anchor="middle" font-size="18" font-weight="700" fill="#1f3d14">Grass / Lawn (SE)</text>
+
+      <!-- ===== BED 1 (SW bed, 8ft x 4ft) ===== -->
+      <g class="bed-group">
+        <rect x="275" y="280" width="400" height="200" fill="url(#soil)" stroke="#3a3a3a" stroke-width="4"/>
+        <rect x="279" y="284" width="392" height="192" fill="none" stroke="#7a7a7a" stroke-width="1.2"/>
+        <rect x="275" y="280" width="400" height="200" fill="url(#bedgrid)" opacity="0.55"/>
+        <text x="475" y="360" text-anchor="middle" font-size="20" font-weight="700" fill="#2b1b0a">BED 1</text>
+        <text x="475" y="382" text-anchor="middle" font-size="12" fill="#2b1b0a">(SW bed · 8 × 4 × 1 ft)</text>
+        <!-- Bed 1 planting hints -->
+        <text x="475" y="310" text-anchor="middle" font-size="11" font-style="italic" fill="#4a3a20">Okra (NW row) · Brinjal (mid) · Zucchini (SE)</text>
+        <text x="475" y="465" text-anchor="middle" font-size="10" fill="#4a3a20">+ marigold &amp; basil companions</text>
+        <title>BED 1 (SW): Okra along NW edge, brinjal in middle, zucchini + companion herbs on SE edge</title>
+      </g>
+
+      <!-- 1-ft gap / metal divider -->
+      <rect x="675" y="280" width="50" height="200" fill="#8a8a8a" stroke="#5a5a5a" stroke-width="1.5"/>
+      <text x="700" y="385" text-anchor="middle" font-size="9" font-style="italic" fill="#f0f0f0" transform="rotate(-90 700 385)">1 ft divider</text>
+
+      <!-- ===== BED 2 (NE bed, 8ft x 4ft) ===== -->
+      <g class="bed-group">
+        <rect x="725" y="280" width="400" height="200" fill="url(#soil)" stroke="#3a3a3a" stroke-width="4"/>
+        <rect x="729" y="284" width="392" height="192" fill="none" stroke="#7a7a7a" stroke-width="1.2"/>
+        <rect x="725" y="280" width="400" height="200" fill="url(#bedgrid)" opacity="0.55"/>
+        <text x="925" y="360" text-anchor="middle" font-size="20" font-weight="700" fill="#2b1b0a">BED 2</text>
+        <text x="925" y="382" text-anchor="middle" font-size="12" fill="#2b1b0a">(NE bed · 8 × 4 × 1 ft)</text>
+        <text x="925" y="310" text-anchor="middle" font-size="11" font-style="italic" fill="#4a3a20">Tomato (NW row) · Cucumber trellis · Roselle</text>
+        <text x="925" y="465" text-anchor="middle" font-size="10" fill="#4a3a20">+ zucchini at SE edge &amp; basil</text>
+        <title>BED 2 (NE): Caged tomatoes along NW edge, cucumber trellis end, roselle shrub, zucchini on SE edge</title>
+      </g>
+
+      <!-- Dim labels -->
+      <text x="475" y="505" text-anchor="middle" font-size="11" fill="#2b3a2b">← 8 ft →</text>
+      <text x="925" y="505" text-anchor="middle" font-size="11" fill="#2b3a2b">← 8 ft →</text>
+      <text x="260" y="385" text-anchor="middle" font-size="11" fill="#2b3a2b" transform="rotate(-90 260 385)">← 4 ft →</text>
+
+      <!-- =========================================================
+           POTS — Bottle Gourd (BG), Capsicum (CP), Green Chili (GC)
+           ========================================================= -->
+
+      <!-- BOTTLE GOURD (large, green) — 3 pots, each near a fence with vine lines -->
+
+      <!-- BG1 — SW corner, climbs SW fence (upward along left edge) -->
+      <g class="pot-group">
+        <circle cx="140" cy="215" r="24" fill="url(#potBG)" stroke="#2b3a2b" stroke-width="2"/>
+        <circle cx="140" cy="215" r="18" fill="#5a3a1a" stroke="#3a2a1a" stroke-width="1"/>
+        <text x="140" y="219" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">BG1</text>
+        <title>Bottle Gourd #1 — 20-gal pot · climbs SW fence</title>
+      </g>
+      <!-- Vine path from BG1 to SW fence -->
+      <path d="M 125 200 Q 110 175 105 160" fill="none" stroke="#3a7a2a" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrowVine)"/>
+
+      <!-- BG2 — SE middle, climbs SE fence -->
+      <g class="pot-group">
+        <circle cx="700" cy="570" r="24" fill="url(#potBG)" stroke="#2b3a2b" stroke-width="2"/>
+        <circle cx="700" cy="570" r="18" fill="#5a3a1a" stroke="#3a2a1a" stroke-width="1"/>
+        <text x="700" y="574" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">BG2</text>
+        <title>Bottle Gourd #2 — 20-gal pot · climbs SE fence (center)</title>
+      </g>
+      <path d="M 700 590 Q 700 600 700 608" fill="none" stroke="#3a7a2a" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrowVine)"/>
+      <!-- lateral spread hint along SE fence -->
+      <path d="M 690 608 Q 600 613 500 612" fill="none" stroke="#3a7a2a" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.6"/>
+      <path d="M 710 608 Q 800 613 900 612" fill="none" stroke="#3a7a2a" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.6"/>
+
+      <!-- BG3 — NE corner, climbs NE fence -->
+      <g class="pot-group">
+        <circle cx="1260" cy="215" r="24" fill="url(#potBG)" stroke="#2b3a2b" stroke-width="2"/>
+        <circle cx="1260" cy="215" r="18" fill="#5a3a1a" stroke="#3a2a1a" stroke-width="1"/>
+        <text x="1260" y="219" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">BG3</text>
+        <title>Bottle Gourd #3 — 20-gal pot · climbs NE fence</title>
+      </g>
+      <path d="M 1275 200 Q 1290 175 1298 160" fill="none" stroke="#3a7a2a" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrowVine)"/>
+
+      <!-- CAPSICUM (bell pepper) — 4 medium pots, terracotta -->
+      <!-- Top strip (house wall side) -->
+      <g class="pot-group">
+        <circle cx="380" cy="215" r="18" fill="url(#potTC)" stroke="#6b3420" stroke-width="1.5"/>
+        <circle cx="380" cy="215" r="13" fill="#5a3a1a"/>
+        <text x="380" y="218" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">CP1</text>
+        <title>Capsicum #1 — 5-gal pot · heat-banked against house wall</title>
+      </g>
+      <g class="pot-group">
+        <circle cx="830" cy="215" r="18" fill="url(#potTC)" stroke="#6b3420" stroke-width="1.5"/>
+        <circle cx="830" cy="215" r="13" fill="#5a3a1a"/>
+        <text x="830" y="218" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">CP2</text>
+        <title>Capsicum #2 — 5-gal pot</title>
+      </g>
+      <!-- Bottom strip -->
+      <g class="pot-group">
+        <circle cx="380" cy="570" r="18" fill="url(#potTC)" stroke="#6b3420" stroke-width="1.5"/>
+        <circle cx="380" cy="570" r="13" fill="#5a3a1a"/>
+        <text x="380" y="573" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">CP3</text>
+        <title>Capsicum #3 — 5-gal pot · sun-soaked SE strip</title>
+      </g>
+      <g class="pot-group">
+        <circle cx="1050" cy="570" r="18" fill="url(#potTC)" stroke="#6b3420" stroke-width="1.5"/>
+        <circle cx="1050" cy="570" r="13" fill="#5a3a1a"/>
+        <text x="1050" y="573" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">CP4</text>
+        <title>Capsicum #4 — 5-gal pot</title>
+      </g>
+
+      <!-- GREEN CHILI — 6 smaller pots -->
+      <!-- Top strip -->
+      <g class="pot-group">
+        <circle cx="240" cy="215" r="15" fill="#5a8a3a" stroke="#2b3a2b" stroke-width="1.5"/>
+        <circle cx="240" cy="215" r="11" fill="#3a2a1a"/>
+        <text x="240" y="218" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">GC1</text>
+        <title>Green Chili #1 — 3-gal pot</title>
+      </g>
+      <g class="pot-group">
+        <circle cx="500" cy="215" r="15" fill="#5a8a3a" stroke="#2b3a2b" stroke-width="1.5"/>
+        <circle cx="500" cy="215" r="11" fill="#3a2a1a"/>
+        <text x="500" y="218" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">GC2</text>
+        <title>Green Chili #2 — 3-gal pot</title>
+      </g>
+      <g class="pot-group">
+        <circle cx="590" cy="215" r="15" fill="#5a8a3a" stroke="#2b3a2b" stroke-width="1.5"/>
+        <circle cx="590" cy="215" r="11" fill="#3a2a1a"/>
+        <text x="590" y="218" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">GC3</text>
+        <title>Green Chili #3 — 3-gal pot</title>
+      </g>
+      <g class="pot-group">
+        <circle cx="950" cy="215" r="15" fill="#5a8a3a" stroke="#2b3a2b" stroke-width="1.5"/>
+        <circle cx="950" cy="215" r="11" fill="#3a2a1a"/>
+        <text x="950" y="218" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">GC4</text>
+        <title>Green Chili #4 — 3-gal pot</title>
+      </g>
+      <g class="pot-group">
+        <circle cx="1120" cy="215" r="15" fill="#5a8a3a" stroke="#2b3a2b" stroke-width="1.5"/>
+        <circle cx="1120" cy="215" r="11" fill="#3a2a1a"/>
+        <text x="1120" y="218" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">GC5</text>
+        <title>Green Chili #5 — 3-gal pot</title>
+      </g>
+      <!-- Bottom strip -->
+      <g class="pot-group">
+        <circle cx="230" cy="570" r="15" fill="#5a8a3a" stroke="#2b3a2b" stroke-width="1.5"/>
+        <circle cx="230" cy="570" r="11" fill="#3a2a1a"/>
+        <text x="230" y="573" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">GC6</text>
+        <title>Green Chili #6 — 3-gal pot</title>
+      </g>
+      <g class="pot-group">
+        <circle cx="470" cy="570" r="15" fill="#5a8a3a" stroke="#2b3a2b" stroke-width="1.5"/>
+        <circle cx="470" cy="570" r="11" fill="#3a2a1a"/>
+        <text x="470" y="573" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">GC7</text>
+        <title>Green Chili #7 — 3-gal pot</title>
+      </g>
+      <g class="pot-group">
+        <circle cx="920" cy="570" r="15" fill="#5a8a3a" stroke="#2b3a2b" stroke-width="1.5"/>
+        <circle cx="920" cy="570" r="11" fill="#3a2a1a"/>
+        <text x="920" y="573" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">GC8</text>
+        <title>Green Chili #8 — 3-gal pot</title>
+      </g>
+      <g class="pot-group">
+        <circle cx="1180" cy="570" r="15" fill="#5a8a3a" stroke="#2b3a2b" stroke-width="1.5"/>
+        <circle cx="1180" cy="570" r="11" fill="#3a2a1a"/>
+        <text x="1180" y="573" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">GC9</text>
+        <title>Green Chili #9 — 3-gal pot · bonus</title>
+      </g>
+
+      <!-- Empty / spare pots (dark circles from photo) -->
+      <g opacity="0.75">
+        <circle cx="1200" cy="215" r="9" fill="url(#potEmpty)"/>
+        <circle cx="310" cy="570" r="9" fill="url(#potEmpty)"/>
+        <circle cx="790" cy="215" r="9" fill="url(#potEmpty)"/>
+        <circle cx="780" cy="570" r="9" fill="url(#potEmpty)"/>
+      </g>
+      <text x="1200" y="238" text-anchor="middle" font-size="8" fill="#666" font-style="italic">empty</text>
+
+      <!-- ===== COMPASS ROSE ===== -->
+      <g transform="translate(120,110)">
+        <circle cx="0" cy="0" r="48" fill="#fff" stroke="#2b3a2b" stroke-width="2"/>
+        <circle cx="0" cy="0" r="3" fill="#2b3a2b"/>
+        <polygon points="0,-42 -7,0 7,0" fill="#c0392b"/>
+        <text x="0" y="-50" text-anchor="middle" font-size="12" font-weight="700" fill="#2b3a2b">NW</text>
+        <polygon points="42,0 0,-7 0,7" fill="#c0392b" fill-opacity="0.55"/>
+        <text x="56" y="4" text-anchor="middle" font-size="12" font-weight="700" fill="#2b3a2b">NE</text>
+        <polygon points="0,42 -7,0 7,0" fill="#2b3a2b"/>
+        <text x="0" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="#2b3a2b">SE</text>
+        <polygon points="-42,0 0,-7 0,7" fill="#2b3a2b"/>
+        <text x="-56" y="4" text-anchor="middle" font-size="12" font-weight="700" fill="#2b3a2b">SW</text>
+      </g>
+
+      <!-- Sun arc callout -->
+      <g transform="translate(1260,105)">
+        <circle cx="0" cy="0" r="22" fill="#ffd666" stroke="#e8a42a" stroke-width="1.5"/>
+        <text x="0" y="4" text-anchor="middle" font-size="11" font-weight="700" fill="#8a5a00">SUN</text>
+        <path d="M 35 25 Q 0 45 -35 10" stroke="#e8a42a" stroke-width="2" fill="none" stroke-dasharray="3 2" marker-end="url(#arrowSun)"/>
+      </g>
+
+      <!-- ===== LEGEND (bottom of SVG) ===== -->
+      <g transform="translate(70,740)">
+        <text x="0" y="0" font-size="12" font-weight="700" fill="#2b3a2b">Legend</text>
+        <!-- Bottle gourd -->
+        <circle cx="90" cy="-4" r="10" fill="url(#potBG)" stroke="#2b3a2b" stroke-width="1"/>
+        <text x="108" y="0" font-size="11" fill="#2b3a2b">Bottle Gourd (BG) · 20 gal · climbs fence</text>
+        <!-- Capsicum -->
+        <circle cx="420" cy="-4" r="9" fill="url(#potTC)" stroke="#6b3420" stroke-width="1"/>
+        <text x="438" y="0" font-size="11" fill="#2b3a2b">Capsicum (CP) · 5 gal</text>
+        <!-- Chili -->
+        <circle cx="640" cy="-4" r="8" fill="#5a8a3a" stroke="#2b3a2b" stroke-width="1"/>
+        <text x="656" y="0" font-size="11" fill="#2b3a2b">Green Chili (GC) · 3 gal</text>
+        <!-- Empty -->
+        <circle cx="810" cy="-4" r="7" fill="url(#potEmpty)"/>
+        <text x="824" y="0" font-size="11" fill="#2b3a2b">Empty / movable pot</text>
+        <!-- Fence -->
+        <line x1="970" y1="-4" x2="1000" y2="-4" stroke="#5a4a30" stroke-width="3"/>
+        <text x="1008" y="0" font-size="11" fill="#2b3a2b">Fence (SW / SE / NE)</text>
+        <!-- Vine -->
+        <path d="M 1135 -4 L 1165 -4" stroke="#3a7a2a" stroke-width="2" stroke-dasharray="4 3"/>
+        <text x="1172" y="0" font-size="11" fill="#2b3a2b">Vine climb direction</text>
+      </g>
+
+      <text x="700" y="785" text-anchor="middle" font-size="10" fill="#888" font-style="italic">Plot span: ~25 ft (SW↔NE) × ~11 ft (NW↔SE). Hover pots &amp; beds for details.</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ========== POT PLACEMENT STRATEGY ========== -->
+<section class="sect" id="pots">
+  <span class="sect-label">Pot Strategy</span>
+  <h2 class="sect-title">Where every pot goes — and why.</h2>
+  <p class="sect-lead">Pots are the flexible layer of the plan. They stay movable all season so you can chase the sun, escape a frost, or pull a plant away from a pest outbreak. Three roles for three plants.</p>
+
+  <div class="pot-grid">
+
+    <div class="pot-card bg">
+      <span class="badge">Bottle Gourd · 3 pots</span>
+      <h3>Fence-climbing champions</h3>
+      <div class="spec">
+        <span><b>Pot size:</b> 20 gal (50L+)</span>
+        <span><b>Depth:</b> ≥ 16"</span>
+      </div>
+      <ul>
+        <li><b>BG1 — SW corner:</b> Tucked against the SW fence. Vine climbs straight up and spreads along the SW fence into the back of the garden.</li>
+        <li><b>BG2 — SE middle:</b> Centered on the SE (lawn-side) fence. Vine runs up and spreads laterally along the SE fence in both directions — this is your longest fence run.</li>
+        <li><b>BG3 — NE corner:</b> Against the NE fence. Vine climbs up and wraps around the NE corner.</li>
+        <li><b>Why pots, not beds:</b> Bottle gourd is aggressive (20+ ft vines). Keeping it in pots contains the roots and leaves bed space for other crops.</li>
+        <li><b>Support:</b> Run jute twine or netting up each fence section. Fruits hang — support heavy ones with cloth slings.</li>
+      </ul>
+    </div>
+
+    <div class="pot-card cp">
+      <span class="badge">Capsicum · 4 pots</span>
+      <h3>Wall-warmed peppers</h3>
+      <div class="spec">
+        <span><b>Pot size:</b> 5 gal</span>
+        <span><b>Depth:</b> ≥ 12"</span>
+      </div>
+      <ul>
+        <li><b>CP1 &amp; CP2 — top strip:</b> Along the house wall (NW). The wall banks heat and reflects warmth — capsicum fruits set better at 70–85°F.</li>
+        <li><b>CP3 &amp; CP4 — bottom strip:</b> Along the SE (lawn-facing) side for raw sunlight throughout the day.</li>
+        <li><b>Spacing:</b> Keep pots 2 ft apart minimum for airflow — prevents fungal issues we saw with the melons.</li>
+        <li><b>Stake each plant:</b> Branches snap under fruit load. 3-ft bamboo stake + soft tie per plant.</li>
+      </ul>
+    </div>
+
+    <div class="pot-card gc">
+      <span class="badge">Green Chili · 6–9 pots</span>
+      <h3>Scattered heat-lovers</h3>
+      <div class="spec">
+        <span><b>Pot size:</b> 3 gal</span>
+        <span><b>Depth:</b> ≥ 10"</span>
+      </div>
+      <ul>
+        <li><b>GC1–GC5 — top strip:</b> Five pots distributed along the house wall side, filling gaps between capsicum pots.</li>
+        <li><b>GC6–GC9 — bottom strip:</b> Four more along the SE fence side, giving a continuous chili ribbon across both strips.</li>
+        <li><b>Why so many:</b> Chilies are prolific — even a few plants feed a household. Spread across pots = spread across risk (one bad pot ≠ no chilies).</li>
+        <li><b>Pair with basil:</b> A basil plant tucked into each chili pot deters aphids and whiteflies.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== PLANTS GRID ========== -->
+<section class="sect" id="plants" style="background: var(--cream-dark); margin: 0; max-width: none; padding: 80px 40px;">
+  <div style="max-width:1400px; margin: 0 auto;">
+    <span class="sect-label">The Lineup</span>
+    <h2 class="sect-title">Nine plants, three homes.</h2>
+    <p class="sect-lead">Each variety is tagged by where it lives: raised <b>bed</b>, movable <b>pot</b>, or <b>fence climber</b>. Color-coded for quick scanning.</p>
+
+    <div class="plant-grid">
+
+      <div class="plant-card">
+        <div class="plant-icon tag-bed">T</div>
+        <h4>Tomato</h4>
+        <div class="latin">Solanum lycopersicum</div>
+        <div class="row"><span>Home</span><span>Bed 2 · NW row</span></div>
+        <div class="row"><span>Spacing</span><span>24"</span></div>
+        <div class="row"><span>Support</span><span>Cages</span></div>
+        <div class="row"><span>Companion</span><span>Basil, marigold</span></div>
+      </div>
+
+      <div class="plant-card">
+        <div class="plant-icon tag-bed">B</div>
+        <h4>Brinjal</h4>
+        <div class="latin">Solanum melongena</div>
+        <div class="row"><span>Home</span><span>Bed 1 · middle</span></div>
+        <div class="row"><span>Spacing</span><span>18–24"</span></div>
+        <div class="row"><span>Support</span><span>Stake</span></div>
+        <div class="row"><span>Companion</span><span>Beans, marigold</span></div>
+      </div>
+
+      <div class="plant-card">
+        <div class="plant-icon tag-bed">O</div>
+        <h4>Okra (Ladies Finger)</h4>
+        <div class="latin">Abelmoschus esculentus</div>
+        <div class="row"><span>Home</span><span>Bed 1 · NW row</span></div>
+        <div class="row"><span>Spacing</span><span>12–18"</span></div>
+        <div class="row"><span>Support</span><span>None</span></div>
+        <div class="row"><span>Height</span><span>5–6 ft</span></div>
+      </div>
+
+      <div class="plant-card">
+        <div class="plant-icon tag-bed">C</div>
+        <h4>Cucumber</h4>
+        <div class="latin">Cucumis sativus</div>
+        <div class="row"><span>Home</span><span>Bed 2 · NE end</span></div>
+        <div class="row"><span>Spacing</span><span>12" (vertical)</span></div>
+        <div class="row"><span>Support</span><span>Net trellis</span></div>
+        <div class="row"><span>Companion</span><span>Dill, radish</span></div>
+      </div>
+
+      <div class="plant-card">
+        <div class="plant-icon tag-bed">Z</div>
+        <h4>Zucchini <small style="color:#c0392b; font-size:10px; font-weight:700;">NEW</small></h4>
+        <div class="latin">Cucurbita pepo</div>
+        <div class="row"><span>Home</span><span>Both beds · SE edge</span></div>
+        <div class="row"><span>Spacing</span><span>36"</span></div>
+        <div class="row"><span>Support</span><span>None / stake</span></div>
+        <div class="row"><span>Count</span><span>2–3 plants</span></div>
+      </div>
+
+      <div class="plant-card">
+        <div class="plant-icon tag-bed">R</div>
+        <h4>Roselle (Gongura)</h4>
+        <div class="latin">Hibiscus sabdariffa</div>
+        <div class="row"><span>Home</span><span>Bed 2 · middle</span></div>
+        <div class="row"><span>Spacing</span><span>36"</span></div>
+        <div class="row"><span>Harvest</span><span>Leaves all season</span></div>
+        <div class="row"><span>Height</span><span>4 ft shrub</span></div>
+      </div>
+
+      <div class="plant-card">
+        <div class="plant-icon tag-fence">BG</div>
+        <h4>Bottle Gourd</h4>
+        <div class="latin">Lagenaria siceraria</div>
+        <div class="row"><span>Home</span><span>3 pots · fence</span></div>
+        <div class="row"><span>Pot</span><span>20 gal</span></div>
+        <div class="row"><span>Support</span><span>SW/SE/NE fence</span></div>
+        <div class="row"><span>Watch</span><span>Cucurbit family — rotate!</span></div>
+      </div>
+
+      <div class="plant-card">
+        <div class="plant-icon tag-pot">CP</div>
+        <h4>Capsicum <small style="color:#c0392b; font-size:10px; font-weight:700;">NEW</small></h4>
+        <div class="latin">Capsicum annuum</div>
+        <div class="row"><span>Home</span><span>4 pots</span></div>
+        <div class="row"><span>Pot</span><span>5 gal</span></div>
+        <div class="row"><span>Support</span><span>Bamboo stake</span></div>
+        <div class="row"><span>Companion</span><span>Basil</span></div>
+      </div>
+
+      <div class="plant-card">
+        <div class="plant-icon tag-pot">GC</div>
+        <h4>Green Chili <small style="color:#c0392b; font-size:10px; font-weight:700;">NEW</small></h4>
+        <div class="latin">Capsicum annuum (hot)</div>
+        <div class="row"><span>Home</span><span>6–9 pots</span></div>
+        <div class="row"><span>Pot</span><span>3 gal</span></div>
+        <div class="row"><span>Support</span><span>Short stake</span></div>
+        <div class="row"><span>Harvest</span><span>Continuous</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== DISEASE ========== -->
+<section class="sect" id="disease">
+  <span class="sect-label">Lessons Learned</span>
+  <h2 class="sect-title">Why the melons died — and how bottle gourd survives.</h2>
+  <p class="sect-lead">Last year's watermelon and muskmelon were wiped out by disease and bugs. Bottle gourd is in the same family (Cucurbitaceae) and will face the same threats. Here's the playbook so history doesn't repeat.</p>
+
+  <div class="disease-wrap">
+
+    <div class="disease-card alert">
+      <h3>The usual suspects (cucurbit family)</h3>
+      <ul>
+        <li><b>Powdery mildew</b> — white powder on leaves, spreads fast in humid weather with poor airflow.</li>
+        <li><b>Downy mildew</b> — yellow blotches on leaves, thrives in wet foliage.</li>
+        <li><b>Cucumber mosaic virus</b> — spread by aphids; mottled, stunted growth; no cure once infected.</li>
+        <li><b>Fusarium / bacterial wilt</b> — vines suddenly collapse from base. Often soil-borne.</li>
+        <li><b>Cucumber beetles</b> — chew leaves AND spread bacterial wilt. The double threat.</li>
+        <li><b>Squash vine borers</b> — larvae tunnel inside stems, plant dies from the base up.</li>
+        <li><b>Aphids &amp; spider mites</b> — sap-suckers; weaken plants and spread viruses.</li>
+      </ul>
+    </div>
+
+    <div class="disease-card">
+      <h3>Prevention playbook (do all of these)</h3>
+      <ol>
+        <li><b>Don't plant cucurbits where melons grew.</b> The SW corner where BG1 sits should be fresh soil — top-dress with compost + neem cake, and avoid reusing last year's soil for BG.</li>
+        <li><b>Drip, never spray.</b> Overhead water on leaves = mildew factory. Water at soil level only.</li>
+        <li><b>Airflow is medicine.</b> 2-ft spacing between pots, training vines up the fence instead of letting them sprawl on the ground.</li>
+        <li><b>Mulch the pot surface.</b> Stops soil splash (which carries fungal spores to lower leaves) and keeps moisture even.</li>
+        <li><b>Neem oil, weekly, preventatively.</b> Mix 2 tsp neem + 1 tsp soap per liter. Spray leaves (top &amp; bottom) in evening starting at flowering.</li>
+        <li><b>Row cover until flowering.</b> Lightweight fabric over young bottle gourd keeps beetles and moths out. Remove when flowers appear so pollinators can visit.</li>
+        <li><b>Companion allies.</b> Nasturtiums near pots (trap aphids), marigolds in bed (nematode deterrent), basil with chilies.</li>
+        <li><b>Inspect every Sunday.</b> Flip leaves, check stems. Remove anything mottled or collapsing immediately and don't compost it.</li>
+        <li><b>Healthy soil = resistant plants.</b> Compost + mycorrhizal inoculant + vermicompost monthly. Strong root biology outcompetes pathogens.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TECH CALLOUT ========== -->
+<section class="sect" id="tech">
+  <div class="callout">
+    <div>
+      <h3>Next up: the smart layer.</h3>
+      <p>Every pot and every bed gets a drip emitter on a zoned 12V solenoid system driven by a Raspberry Pi. Capacitive soil moisture sensors across both beds and in two reference pots will trigger watering based on a per-zone threshold — and skip entirely if rain is forecast. A Pi Camera on a mast will time-lapse the garden and flag leaf diseases early using a TensorFlow Lite model. Home Assistant dashboard on your phone.</p>
+    </div>
+    <div class="callout-icon">Pi</div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand-foot">FarmSmart</div>
+  <div>Personal garden project · Planting season 2026</div>
+  <div style="margin-top: 10px; opacity: 0.6;">House wall NW · Lawn SE · Fence wraps SW–SE–NE</div>
+</footer>
+
+</body>
+</html>
